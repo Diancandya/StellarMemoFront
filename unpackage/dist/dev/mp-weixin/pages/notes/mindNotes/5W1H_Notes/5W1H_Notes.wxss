@@ -1,0 +1,65 @@
+
+.titleF{
+		display: inline-block;
+		font-size: 35px;
+}
+.titleS{
+		font-size:30px;
+}
+.qWhat{
+		color: #c53d43;
+		font-size: 25px;
+}
+.aWhat{
+		color: #1e50a2;
+		font-size:25px;
+}
+.qWhere{
+			color: #c53d43;
+			font-size: 25px;
+}
+.aWhere{
+			color: #1e50a2;
+			font-size:25px;
+}
+.qWhen{
+			color: #c53d43;
+			font-size: 25px;
+}
+.aWhen{
+			color: #1e50a2;
+			font-size:25px;
+}
+.qWhy{
+			color: #c53d43;
+			font-size: 25px;
+}
+.aWhy{
+			color: #1e50a2;
+			font-size:25px;
+}
+.qWho{
+		color: #c53d43;
+		font-size: 25px;
+}
+.aWho{
+		color: #1e50a2;
+		font-size:25px;
+}
+.qHow{
+		color: #c53d43;
+		font-size: 25px;
+}
+.aHow{
+		color: #1e50a2;
+		font-size:25px;
+}
+.questionIcon{
+	display: inline-block;
+	padding: 10px 10px;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	font-size: 35px;
+}
+

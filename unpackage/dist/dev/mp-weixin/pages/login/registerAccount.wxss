@@ -1,0 +1,33 @@
+
+.container {
+  padding: 20rpx;
+}
+.form-group {
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+}
+.label {
+  width: 100rpx;
+}
+.input {
+  flex: 1;
+  height: 60rpx;
+  border: 1px solid #ccc;
+  border-radius: 8rpx;
+  padding: 0 10rpx;
+}
+.button-group {
+  display: flex;
+  justify-content: center;
+}
+.button {
+  width: 200rpx;
+  height: 60rpx;
+  background-color: #007aff;
+  color: #fff;
+  border-radius: 8rpx;
+  line-height: 60rpx;
+  text-align: center;
+}
+

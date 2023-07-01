@@ -1,0 +1,94 @@
+{
+	"pages": [{
+		"path": "pages/index/index",
+		"style": {
+			"navigationBarTitleText": "uni-app"
+		}
+
+	},
+	{
+		"path":"pages/index/login",	
+		"style": {
+			"navigationBarTitleText": "login"
+		}
+	},
+	{
+		"path":"pages/index/user",	
+		"style": {
+			"navigationBarTitleText": "user"
+		}
+	},
+	{
+		"path":"pages/home/home",	
+		"style": {
+			"navigationBarTitleText": "home"
+		}
+	},
+	{
+		"path":"pages/login/registerAccount",	
+		"style": {
+			"navigationBarTitleText": "registerAccount"
+		}
+	},
+	{
+		"path":"pages/login/retrievePassword",	
+		"style": {
+			"navigationBarTitleText": "retrievePassword"
+		}
+	},
+	{
+		"path":"pages/notes/selectCategory/selectCategory",
+		"style": {
+			"navigationBarTitleText": "selectCategory"
+		}
+	},
+	{
+		"path":"pages/notes/dailyNotes/dailyNotes",
+		"style": {
+			"navigationBarTitleText": "dailyNotes"
+		}
+	},
+	{
+		"path":"pages/notes/mindNotes/SelectMindNotes/SelectMindNotes",
+		"style": {
+			"navigationBarTitleText": "SelectMindNotes"
+		}
+	},
+	{
+		"path":"pages/notes/mindNotes/5W1H_Notes/5W1H_Notes",
+		"style": {
+			"navigationBarTitleText": "5W1H_Notes"
+		}
+	},
+	{
+		"path":"pages/notes/mindNotes/SWOT_Notes/SWOT_Notes",
+		"style": {
+			"navigationBarTitleText": "SWOT_Notes"
+		}
+	},
+	{
+		"path":"pages/notes/mindNotes/TimeFourQuadrants_Notes/TimeFourQuadrants_Notes",
+		"style": {
+			"navigationBarTitleText": "TimeFourQuadrants_Notes"
+		}
+	}
+        ,{
+            "path" : "pages/notes/browseNotes/browseNotes",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"app-plus": {
+			"background": "#efeff4"
+		}
+	}
+}

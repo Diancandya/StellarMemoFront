@@ -1,0 +1,1 @@
+<view class="container"><view class="bottom"><image class="bottom-image" src="/static/plus.png" data-event-opts="{{[['tap',[['redirectToNotesPage',['$event']]]]]}}" bindtap="__e"></image></view></view>

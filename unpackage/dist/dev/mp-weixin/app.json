@@ -1,0 +1,25 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/login",
+    "pages/index/user",
+    "pages/home/home",
+    "pages/login/registerAccount",
+    "pages/login/retrievePassword",
+    "pages/notes/selectCategory/selectCategory",
+    "pages/notes/dailyNotes/dailyNotes",
+    "pages/notes/mindNotes/SelectMindNotes/SelectMindNotes",
+    "pages/notes/mindNotes/5W1H_Notes/5W1H_Notes",
+    "pages/notes/mindNotes/SWOT_Notes/SWOT_Notes",
+    "pages/notes/mindNotes/TimeFourQuadrants_Notes/TimeFourQuadrants_Notes",
+    "pages/notes/browseNotes/browseNotes"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {}
+}
