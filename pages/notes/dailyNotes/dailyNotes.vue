@@ -106,12 +106,16 @@
 		methods: {
 			// 失去焦点时，获取富文本的内容
 			getContents() {
-				let _this = this
-				this.editorCtx.getContents({
-					success(res) {
-						_this.$emit('getContents', res.html)
-						}
-				})
+			  return new Promise((resolve, reject) => {
+			    this.editorCtx.getContents({
+			      success(res) {
+			        resolve(res.html);
+			      },
+			      fail(err) {
+			        reject(err);
+			      }
+			    });
+			  });
 			},
 
 			readOnlyChange() {
@@ -174,26 +178,46 @@
 				})
 			},
 			insertImage() {
-				uni.chooseImage({
-					count: 1,
-					success: (res) => {
-						this.editorCtx.insertImage({
-							src: res.tempFilePaths[0],
-							alt: '图像',
-							success: function() {
-								console.log('insert image success')
-							}
-						})
-					}
-				})
+			  uni.chooseImage({
+			    count: 1,
+			    success: (res) => {
+			      const tempFilePath = res.tempFilePaths[0];
+			      uni.getImageInfo({
+			        src: tempFilePath,
+			        success: (infoRes) => {
+			          const fs = uni.getFileSystemManager();
+			          fs.readFile({
+			            filePath: tempFilePath,
+			            encoding: 'base64',
+			            success: (dataRes) => {
+			              const base64Data = dataRes.data;
+			              this.editorCtx.insertImage({
+			                src: `data:${infoRes.type};base64,${base64Data}`,
+			                alt: '图像',
+			                success: function() {
+			                  console.log('insert image success')
+			                }
+			              })
+			            },
+			            fail: (err) => {
+			              console.error('read file failed', err);
+			            }
+			          })
+			        },
+			        fail: (err) => {
+			          console.error('get image info failed', err);
+			        }
+			      });
+			    }
+			  })
 			},
-			saveNotes(){
+			async saveNotes(){
 				const noteData = {
 				  title: this.titleValue,
-				  body: this.getContents(),
+				  content: await this.getContents(),
 				};
 				uni.request({
-				  url: 'http://localhost:8083/user/register', // 后端接收接口的 URL
+				  url: 'http://localhost:8083/note/create', // 后端接收接口的 URL
 				  method: 'POST',
 				  data: noteData,
 				  success: (res) => {

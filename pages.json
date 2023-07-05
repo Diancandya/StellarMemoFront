@@ -1,5 +1,12 @@
 {
-	"pages": [{
+	"pages": [
+	{
+		"path":"pages/notes/dailyNotes/dailyNotes",
+		"style": {
+			"navigationBarTitleText": "dailyNotes"
+		}
+	},
+	{
 		"path": "pages/index/index",
 		"style": {
 			"navigationBarTitleText": "uni-app"
@@ -42,12 +49,7 @@
 			"navigationBarTitleText": "selectCategory"
 		}
 	},
-	{
-		"path":"pages/notes/dailyNotes/dailyNotes",
-		"style": {
-			"navigationBarTitleText": "dailyNotes"
-		}
-	},
+	
 	{
 		"path":"pages/notes/mindNotes/SelectMindNotes/SelectMindNotes",
 		"style": {

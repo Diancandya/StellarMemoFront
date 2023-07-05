@@ -2,17 +2,17 @@
   <view class="container">
     <view class="row">
       <view class="cell" @click="gotoPage5W1H_Notes">
-        <image class="image" src="../../../../static/5W1H.jfif"></image>
+        <image class="image" src="../../../../static/5W1H.png"></image>
         <text class="text">5W1H</text>
       </view>
       <view class="cell" @click="gotoPageTimeFourQuadrants_Notes">
-        <image class="image" src="../../../../static/FTM.jfif"></image>
+        <image class="image" src="../../../../static/FTM.png"></image>
         <text class="text">四象限时间管理</text>
       </view>
     </view>
     <view class="row">
       <view class="cell" @click="gotoPageSWOT_Notes">
-        <image class="image" src="../../../../static/SWOT.jfif"></image>
+        <image class="image" src="../../../../static/SWOT.png"></image>
         <text class="text">SWOT</text>
       </view>
       <view class="cell" @click="gotoPage4">

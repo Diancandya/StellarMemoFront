@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/notes/dailyNotes/dailyNotes",
     "pages/index/index",
     "pages/index/login",
     "pages/index/user",
@@ -7,7 +8,6 @@
     "pages/login/registerAccount",
     "pages/login/retrievePassword",
     "pages/notes/selectCategory/selectCategory",
-    "pages/notes/dailyNotes/dailyNotes",
     "pages/notes/mindNotes/SelectMindNotes/SelectMindNotes",
     "pages/notes/mindNotes/5W1H_Notes/5W1H_Notes",
     "pages/notes/mindNotes/SWOT_Notes/SWOT_Notes",

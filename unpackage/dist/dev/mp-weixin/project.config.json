@@ -22,7 +22,17 @@
   "libVersion": "2.25.3",
   "appid": "touristappid",
   "projectname": "memo",
-  "condition": {},
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/notes/dailyNotes/dailyNotes",
+          "pathName": "pages/notes/dailyNotes/dailyNotes",
+          "query": ""
+        }
+      ]
+    }
+  },
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
