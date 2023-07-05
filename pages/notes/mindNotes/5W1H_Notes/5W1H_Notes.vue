@@ -158,7 +158,7 @@
       </view>
       <button @click="saveData" class="save-button">保存</button>
     </view>
-  </view>
+
 </template>
 
 <script>
