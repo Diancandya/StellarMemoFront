@@ -1,0 +1,38 @@
+
+.content{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 80rpx;
+	background-color: #fff;
+	height: 100vh;
+}
+.logo {
+	width: 200rpx;
+	height: 200rpx;
+	margin-bottom: 60rpx;
+}
+.is-textarea {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	background-color: #fff;
+	margin-bottom: 40rpx;
+}
+.title {
+	font-size: 32rpx;
+	color: #black;
+	font-weight:bold;
+}
+.button-style {
+	width: 200rpx;
+	height: 68rpx;
+	border-radius: 10%;
+	background-color: #00f;
+	cursor:pointer;
+}
+.button-style ._b {
+    font-weight:bold; /* 将按钮内部的文本加粗 */
+}
+

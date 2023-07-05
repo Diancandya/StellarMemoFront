@@ -148,7 +148,13 @@
 			<input ref="qHowInput" class="qHow" type="text" placeholder="Question" />
 			<input ref="aHowInput" class="aHow" type="text" placeholder="Answer" />
 		</view>
-		
+	<view>
+					<checkbox-group v-model="checkboxValue">
+						<label>
+							<checkbox value="cb" />公开
+						</label>
+					</checkbox-group>
+				</view>
       </view>
       <button @click="saveData" class="save-button">保存</button>
     </view>
@@ -181,6 +187,7 @@ export default {
 	  answerWhoBoxes:[],
 	  questionsHowBoxes: [],
 	  answerHowBoxes:[],
+	  checkboxValue: [] ,
     };
   },
   methods: {
@@ -301,11 +308,17 @@ export default {
          });*/
 		 
 		 const openid = wx.getStorageSync('openid')
+		 if (this.checkboxValue.includes("cb")) {
+		     const char public=1;
+		 } else {
+		 		const char public=0,
+		     }
 		 let noteData = {
 		   openid:this.openid,
 		   title: this.titleValue,
 		   selectedTags: this.selectedTags,
 		   data: this.data,
+		   public=this.public,
 		 }; 
          uni.request({
            url: '后端',

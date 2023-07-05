@@ -101,16 +101,16 @@ var components
 try {
   components = {
     uniRow: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-row/components/uni-row/uni-row */ "uni_modules/uni-row/components/uni-row/uni-row").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-row/components/uni-row/uni-row.vue */ 151))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-row/components/uni-row/uni-row */ "uni_modules/uni-row/components/uni-row/uni-row").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-row/components/uni-row/uni-row.vue */ 165))
     },
     uniCol: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-row/components/uni-col/uni-col */ "uni_modules/uni-row/components/uni-col/uni-col").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-row/components/uni-col/uni-col.vue */ 158))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-row/components/uni-col/uni-col */ "uni_modules/uni-row/components/uni-col/uni-col").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-row/components/uni-col/uni-col.vue */ 172))
     },
     uniIcons: function () {
       return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 143))
     },
     uniPopup: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 165))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 179))
     },
   }
 } catch (e) {
@@ -216,212 +216,9 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--13-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/HbuiderProjects/newmemo/pages/notes/mindNotes/TimeFourQuadrants_Notes/TimeFourQuadrants_Notes.vue?vue&type=script&lang=js& ***!
   \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-/* WEBPACK VAR INJECTION */(function(wx, uni) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default = {
-  data: function data() {
-    return {
-      titleValue: '',
-      type: 'center',
-      gutter: 0,
-      nvueWidth: 730,
-      tags_1: ['情感', '摄影', '搞笑', '游戏', '绘画'],
-      tags_2: ['运动', '旅行', '美食', '穿搭', '学习'],
-      tags_3: ['音乐', '护肤', '壁纸', '手工', '心理'],
-      tags_4: ['动漫', '职场', '机车', '家装', '文化'],
-      selectedTags: [],
-      max: 10,
-      textarea1: '',
-      textarea2: '',
-      textarea3: '',
-      textarea4: '',
-      backimage: '/static/TFQ.png'
-    };
-  },
-  methods: {
-    toggleTagButton: function toggleTagButton(index) {
-      selectedTags: this.selectedTags;
-      var filledCount = this.selectedTags.length;
-      // Check if the clicked button is already selected
-      var selectedIndex = this.selectedTags.indexOf(index);
-      if (selectedIndex > -1) {
-        // Button is already selected, remove it from the selected tags
-        this.selectedTags.splice(selectedIndex, 1);
-      } else {
-        if (filledCount < this.max) {
-          // Button is not selected and max limit is not reached, add it to the selected tags
-          this.selectedTags.push(index);
-        }
-      }
-    },
-    isTagFilled: function isTagFilled(index) {
-      // Check if the button at the given index is selected
-      return this.selectedTags.includes(index);
-    },
-    change: function change(e) {
-      console.log('当前模式：' + e.type + ',状态：' + e.show);
-    },
-    toggle: function toggle(type) {
-      this.type = type;
-      // open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
-      this.$refs.popup.open(type);
-    },
-    saveData: function saveData() {
-      var openid = wx.getStorageSync('openid');
-      var data = {
-        openid: this.openid,
-        title: this.titleValue,
-        textarea1: this.textarea1,
-        textarea2: this.textarea2,
-        textarea3: this.textarea3,
-        textarea4: this.textarea4
-      };
-
-      // 使用UniApp的请求方法发送POST请求到后端
-      uni.request({
-        url: '后端接口URL',
-        method: 'POST',
-        data: data,
-        success: function success(res) {
-          // 请求成功处理逻辑
-          console.log('保存成功');
-        },
-        fail: function fail(err) {
-          // 请求失败处理逻辑
-          console.error('保存失败', err);
-        }
-      });
-    }
-  }
-};
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+throw new Error("Module build failed (from ./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js):\nSyntaxError: Missing initializer in const declaration. (179:16)\n    at instantiate (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:67:32)\n    at constructor (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:364:12)\n    at TypeScriptParserMixin.raise (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:3365:19)\n    at TypeScriptParserMixin.parseVar (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:13647:16)\n    at TypeScriptParserMixin.parseVarStatement (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:13458:10)\n    at TypeScriptParserMixin.parseVarStatement (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:9188:31)\n    at TypeScriptParserMixin.parseStatementContent (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:13039:23)\n    at TypeScriptParserMixin.parseStatementContent (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:9223:18)\n    at TypeScriptParserMixin.parseStatementLike (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:12952:17)\n    at TypeScriptParserMixin.parseStatementListItem (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:12937:17)\n    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:13558:61)\n    at TypeScriptParserMixin.parseBlockBody (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:13550:10)\n    at TypeScriptParserMixin.parseBlock (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:13538:10)\n    at TypeScriptParserMixin.parseStatementContent (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:13046:21)\n    at TypeScriptParserMixin.parseStatementContent (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:9223:18)\n    at TypeScriptParserMixin.parseStatementLike (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:12952:17)\n    at TypeScriptParserMixin.parseStatementOrFunctionDeclaration (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:12940:17)\n    at TypeScriptParserMixin.parseIfStatement (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:13337:28)\n    at TypeScriptParserMixin.parseStatementContent (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:12990:21)\n    at TypeScriptParserMixin.parseStatementContent (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:9223:18)\n    at TypeScriptParserMixin.parseStatementLike (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:12952:17)\n    at TypeScriptParserMixin.parseStatementListItem (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:12937:17)\n    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:13558:61)\n    at TypeScriptParserMixin.parseBlockBody (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:13550:10)\n    at TypeScriptParserMixin.parseBlock (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:13538:10)\n    at TypeScriptParserMixin.parseFunctionBody (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:12287:24)\n    at TypeScriptParserMixin.parseFunctionBodyAndFinish (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:12271:10)\n    at TypeScriptParserMixin.parseFunctionBodyAndFinish (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:8952:18)\n    at TypeScriptParserMixin.parseMethod (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:12226:31)\n    at TypeScriptParserMixin.parseMethod (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:9864:26)\n    at TypeScriptParserMixin.parseObjectMethod (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:12120:19)\n    at TypeScriptParserMixin.parseObjPropValue (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:12154:23)\n    at TypeScriptParserMixin.parseObjPropValue (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:9482:18)\n    at TypeScriptParserMixin.parsePropertyDefinition (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:12083:17)\n    at TypeScriptParserMixin.parseObjectLike (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:11993:21)\n    at TypeScriptParserMixin.parseExprAtom (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:11464:23)\n    at TypeScriptParserMixin.parseExprSubscripts (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:11171:23)\n    at TypeScriptParserMixin.parseUpdate (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:11153:21)\n    at TypeScriptParserMixin.parseMaybeUnary (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:11127:23)\n    at TypeScriptParserMixin.parseMaybeUnary (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:9590:20)\n    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:10956:61)\n    at TypeScriptParserMixin.parseExprOps (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:10962:23)\n    at TypeScriptParserMixin.parseMaybeConditional (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:10937:23)\n    at TypeScriptParserMixin.parseMaybeAssign (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:10895:21)\n    at TypeScriptParserMixin.parseMaybeAssign (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:9529:20)\n    at D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:10863:39\n    at TypeScriptParserMixin.allowInAnd (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:12640:12)\n    at TypeScriptParserMixin.parseMaybeAssignAllowIn (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:10863:17)\n    at TypeScriptParserMixin.parseObjectProperty (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:12127:83)\n    at TypeScriptParserMixin.parseObjPropValue (D:\\soft_setup\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:12154:100)");
 
 /***/ }),
 
