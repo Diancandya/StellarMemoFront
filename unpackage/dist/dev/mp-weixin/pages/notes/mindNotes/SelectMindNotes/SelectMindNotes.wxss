@@ -1,6 +1,14 @@
 
 .container.data-v-54e57760 {
-  display: flex;
+	height:100vh;
+	background-image: linear-gradient(to top, #fbf3c7, #fed3ae, #fbb2a7, #e797af, #bd85bd, #9b76b7, #7369b0, #405da7, #304893, #21337f, #121e6b, #000957);
+  /* display: flex; */
+}
+.subcontainer.data-v-54e57760{
+	background-color: transparent; /* 将容器的背景色设置为透明 */
+}
+.cell.data-v-54e57760{
+	background-color: transparent;
 }
 .image.data-v-54e57760 {
   width:400rpx;

@@ -182,6 +182,9 @@ var _default = {
                   that.nickName = userRes.userInfo.nickName;
                   that.headerUrl = userRes.userInfo.avatarUrl;
                   that.getUserOpenId(userInfo);
+                  uni.navigateTo({
+                    url: './index'
+                  });
                 } else {
                   uni.showToast({
                     icon: "none",

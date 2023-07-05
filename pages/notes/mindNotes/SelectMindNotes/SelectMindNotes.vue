@@ -1,13 +1,15 @@
 
 
 <template>
+	<view class="container">
+		<view class="subContainer">
 	<!-- <uni-section  type="line" padding> -->
 		<uni-grid :column="2" :highlight="true" @change="change">
 		  <uni-grid-item 
 		  v-for="(item, index) in gridData" 
 		  :index="index" 
 		  :key="index" 
-		
+			class="cell"
 		  >
 			<view class="grid-item-box" style="background-color: #fff;">
 			  <image class="image" v-if="item" :src="item.image" mode="aspectFit" />
@@ -15,6 +17,8 @@
 			</view>
 		  </uni-grid-item>
 		</uni-grid>
+		</view>
+		</view>
 	<!--  </uni-section> -->
 	  
 	<!-- <view class="container">
@@ -56,9 +60,9 @@ export default {
 				gutter: 0,
 				nvueWidth: 730,
 				gridData: [
-      			{ image: '../../../../static/5W1H.jfif', text: '5W1H' },
-      			{ image: '../../../../static/FTM.jfif', text: '四象限时间管理' },
-     			{ image: '../../../../static/SWOT.jfif', text: 'SWOT' },
+      			{ image: '../../../../static/5W1H.png', text: '5W1H' },
+      			{ image: '../../../../static/FTM.png', text: '四象限时间管理' },
+     			{ image: '../../../../static/SWOT.png', text: 'SWOT' },
       			null // 第四个宫格为空
     			]
 			}
@@ -131,10 +135,17 @@ export default {
 
 <style scoped>
 .container {
-  display: flex;
+	height:100vh;
+	background-image: linear-gradient(to top, #fbf3c7, #fed3ae, #fbb2a7, #e797af, #bd85bd, #9b76b7, #7369b0, #405da7, #304893, #21337f, #121e6b, #000957);
+  /* display: flex; */
   
 }
-
+.subcontainer{
+	background-color: transparent; /* 将容器的背景色设置为透明 */
+}
+.cell{
+	background-color: transparent;
+}
 
 .image {
   width:400rpx;

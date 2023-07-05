@@ -134,19 +134,23 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
       gutter: 0,
       nvueWidth: 730,
       gridData: [{
-        image: '../../../../static/5W1H.jfif',
+        image: '../../../../static/5W1H.png',
         text: '5W1H'
       }, {
-        image: '../../../../static/FTM.jfif',
+        image: '../../../../static/FTM.png',
         text: '四象限时间管理'
       }, {
-        image: '../../../../static/SWOT.jfif',
+        image: '../../../../static/SWOT.png',
         text: 'SWOT'
       }, null // 第四个宫格为空
       ]

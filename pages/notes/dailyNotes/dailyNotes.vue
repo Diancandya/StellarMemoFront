@@ -294,11 +294,11 @@
 						 	publicValue=0
 						     }
 
-				Headers={
+				const headers={
 					'openid':wx.getStorageSync('openid')
 				}
 				const noteData = {
-				  Headers:Headers,
+				  headers:headers,
 				  title: this.titleValue,
 				  selectedTags: this.selectedTags,
 				  body: this.getContents(),

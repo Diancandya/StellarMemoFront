@@ -6,6 +6,7 @@
 	  	maxlength=12 
 	  	focus
 	  	placeholder="输入标题（不超过12字）"
+		placeholder-style="color:#489F90;"
 	  	v-model="titleValue"
 	  	/>
 	  </view>
@@ -83,70 +84,79 @@
 	  		</view>
 	  
     <view class="analysis-model">
-		<view class="container">
+		<view >
 		  <view class="titleF" >What</view>
 		  <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsWhat" />
 		</view>
-		<input  ref="qWhatInput" class="qWhat" type="text" placeholder="Question" />
-		<input ref="aWhatInput" class="aWhat" type="text" placeholder="Answer" />
+		<input  ref="qWhatInput" class="qWhat" type="text" 
+		placeholder="Question" 
+		placeholder-style="color:#489F90;"
+		/>
+		<input ref="aWhatInput" class="aWhat" type="text" 
+		placeholder="Answer" 
+		placeholder-style="color:#489F90;"/>
 		<view v-for="(questionsWhatBox, qWhatIndex) in questionsWhatBoxes" :key="qWhatindex" >	
-			<input ref="qWhatInput" class="qWhat" type="text" placeholder="Question" />
-			<input ref="aWhatInput" class="aWhat" type="text" placeholder="Answer" />
+			<input ref="qWhatInput" class="qWhat" type="text" 
+			placeholder="Question" 
+			placeholder-style="color:#489F90;"/>
+			<input ref="aWhatInput" class="aWhat" type="text" 
+			placeholder="Answer"
+			 placeholder-style="color:#489F90;"/>
 		</view>
 		
-		<view class="container">
+		<view >
 		  <view class="titleF" >Where</view>
 		  <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsWhere" />
 		</view>
-		<input ref="qWhereInput" class="qWhere" type="text" placeholder="Question" />
-		<input ref="aWhereInput" class="aWhere" type="text" placeholder="Answer" />
+		<input ref="qWhereInput" class="qWhere" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
+		<input ref="aWhereInput" class="aWhere" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
 		<view v-for="(questionsWhereBox, qWhereIndex) in questionsWhereBoxes" :key="qWhereindex">	
-			<input ref="qWhereInput" class="qWhere" type="text" placeholder="Question" />
-			<input ref="aWhereInput" class="aWhere" type="text" placeholder="Answer" />
+			<input ref="qWhereInput" class="qWhere" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
+			<input ref="aWhereInput" class="aWhere" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
 		</view>
 		
-		<view class="container">
+		<view >
 		  <view class="titleF" >When</view>
 		  <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsWhen" />
 		</view>
-		<input ref="qWhenInput" class="qWhen" type="text" placeholder="Question" />
-		<input ref="aWhenInput" class="aWhen" type="text" placeholder="Answer" />
+		<input ref="qWhenInput" class="qWhen" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
+		<input ref="aWhenInput" class="aWhen" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
 		<view v-for="(questionsWhenBox, qWhenIndex) in questionsWhenBoxes" :key="qWhenindex">	
-			<input ref="qWhenInput" class="qWhen" type="text" placeholder="Question" />
-			<input ref="aWhenInput" class="aWhen" type="text" placeholder="Answer" />
+			<input ref="qWhenInput" class="qWhen" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
+			<input ref="aWhenInput" class="aWhen" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
 		</view>
 		
-		<view class="container">
+		<view >
 		  <view class="titleF" >Why</view>
 		  <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsWhy" />
 		</view>
-		<input ref="qWhyInput" class="qWhy" type="text" placeholder="Question" />
-		<input ref="aWhyInput" class="aWhy" type="text" placeholder="Answer" />
+		<input ref="qWhyInput" class="qWhy" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
+		<input ref="aWhyInput" class="aWhy" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
 		<view v-for="(questionsWhyBox, qWhyIndex) in questionsWhyBoxes" :key="qWhyindex">	
-			<input ref="qWhyInput" class="qWhy" type="text" placeholder="Question" />
-			<input ref="aWhyInput" class="aWhy" type="text" placeholder="Answer" />
+			<input ref="qWhyInput" class="qWhy" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
+			<input ref="aWhyInput" class="aWhy" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
 		</view>
 		
-		<view class="container">
+		<view >
 		  <view class="titleF" >Who</view>
 		  <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsWho" />
 		</view>
-		<input ref="qWhoInput" class="qWho" type="text" placeholder="Question" />
-		<input ref="aWhoInput" class="aWho" type="text" placeholder="Answer" />
+		<input ref="qWhoInput" class="qWho" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
+		<input ref="aWhoInput" class="aWho" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
 		<view v-for="(questionsWhoBox, qWhoIndex) in questionsWhoBoxes" :key="qWhoindex">	
-			<input ref="qWhoInput" class="qWho" type="text" placeholder="Question" />
-			<input ref="aWhoInput" class="aWho" type="text" placeholder="Answer" />
+			<input ref="qWhoInput" class="qWho" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
+			<input ref="aWhoInput" class="aWho" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
 		</view>
 		
-		<view class="container">
+		<view >
 		  <view class="titleF" >How</view>
 		  <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsHow" />
 		</view>
-		<input ref="qHowInput" class="qHow" type="text" placeholder="Question" />
-		<input ref="aHowInput" class="aHow" type="text" placeholder="Answer" />
+		<input ref="qHowInput" class="qHow" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
+		<input ref="aHowInput" class="aHow" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
 		<view v-for="(questionsHowBox, qHowIndex) in questionsHowBoxes" :key="qHowindex">	
-			<input ref="qHowInput" class="qHow" type="text" placeholder="Question" />
-			<input ref="aHowInput" class="aHow" type="text" placeholder="Answer" />
+			<input ref="qHowInput" class="qHow" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
+			<input ref="aHowInput" class="aHow" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
 		</view>
 	<view>
 					<checkbox-group v-model="checkboxValue">
@@ -380,7 +390,12 @@ export default {
 </script>
 
 <style>
-	.titleF{
+	.container{
+		color:#EBE645;
+		background-image: linear-gradient(to top, #49549a, #454b92, #414289, #3e3981, #3a3078, #362d73, #33296f, #2f266a, #2b2769, #262867, #222866, #1e2964);
+	}
+		
+		.titleF{
 		display: inline-block;
 		font-size: 35px;
 	}
@@ -388,51 +403,51 @@ export default {
 		font-size:30px;
 	}
 	.qWhat{
-		color: #c53d43;
+		color: #96BC00;
 		font-size: 25px;
 		}
 	.aWhat{
-		color: #1e50a2;
+		color: #F2FEDC;
 		font-size:25px;
 	}
 	.qWhere{
-			color: #c53d43;
+			color: #96BC00;
 			font-size: 25px;
 			}
 	.aWhere{
-			color: #1e50a2;
+			color: #F2FEDC;
 			font-size:25px;
 		}
 	.qWhen{
-			color: #c53d43;
+			color: #96BC00;
 			font-size: 25px;
 			}
 	.aWhen{
-			color: #1e50a2;
+			color: #F2FEDC;
 			font-size:25px;
 		}
 	.qWhy{
-			color: #c53d43;
+			color: #96BC00;
 			font-size: 25px;
 			}
 	.aWhy{
-			color: #1e50a2;
+			color: #F2FEDC;
 			font-size:25px;
 		}
 	.qWho{
-		color: #c53d43;
+		color:#96BC00;
 		font-size: 25px;
 		}
 	.aWho{
-		color: #1e50a2;
+		color: #F2FEDC;
 		font-size:25px;
 	}
 	.qHow{
-		color: #c53d43;
+		color: #96BC00;
 		font-size: 25px;
 		}
 	.aHow{
-		color: #1e50a2;
+		color: #F2FEDC;
 		font-size:25px;
 	}
 .questionIcon{
@@ -447,6 +462,7 @@ export default {
 		height:35px;
 		font-size: 25px;
 	}
+
 	.demo-uni-row {
 			margin-bottom: 0px;
 	
@@ -484,4 +500,11 @@ export default {
 				background-color: #0000003a;
 				color: #fff;
 			  }
+	.save-button{
+		height: auto;
+		 background-color: #E6AB17; /* 设置背景颜色为红色 */
+		    color:#FFF9EA; /* 设置字体颜色为白色 */
+			font-size: 25px;
+			font-weight: bold;
+	}
 </style>

@@ -1,4 +1,8 @@
 
+.container{
+		height: 100vh;
+		background-image: linear-gradient(to top, #fbf3c7, #fed3ae, #fbb2a7, #e797af, #bd85bd, #9b76b7, #7369b0, #405da7, #304893, #21337f, #121e6b, #000957);
+}
 .row {
   display: flex;
   flex-direction: row;
@@ -19,7 +23,9 @@
 }
 .text {
   margin-top: 10rpx;
-  font-size: 36rpx;
+  font-size: 56rpx;
+  font-weight: bold;
+  color:#EBE645;
 }
 .backgroundImage{
 	height: 150vh;

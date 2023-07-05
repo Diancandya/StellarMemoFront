@@ -520,11 +520,11 @@ var _default = {
       } else {
         publicValue = 0;
       }
-      Headers = {
+      var headers = {
         'openid': wx.getStorageSync('openid')
       };
       var noteData = {
-        Headers: Headers,
+        headers: headers,
         title: this.titleValue,
         selectedTags: this.selectedTags,
         body: this.getContents(),
