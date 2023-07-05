@@ -2,9 +2,40 @@
   <div class="community">
     <view class="background">
 		<!-- 顶部搜索栏 -->
-		<div class="search-bar">
+		<!-- <div class="search-bar">
 		  <input type="text" v-model="keyword" placeholder="搜索笔记">
 		  <button class="search-button" @click="searchNotes">查询</button>
+		</div> -->
+		
+		<div>
+			<div class="search-container" >
+				<button class="search-button" @click="redirectToSearch">
+					<UniIcons type="search">请输入要搜索的内容</UniIcons>
+				</button>
+				<!-- <uni-search-bar  bindtap="redirectToSearch" ></uni-search-bar> -->
+				<!-- <div class="dropdown-wrapper">
+					<view v-if="showTags" class="uni-list">
+						<checkbox-group>
+							<label class="uni-list-cell uni-list-cell-pd" v-for="tag in tags" :key="tag.value">
+								<view>
+									<checkbox value="tag.value" checked="tag.checked"></checkbox>
+								</view>
+								<view>{{tag.value}}</view>
+							</label>
+						</checkbox-group>
+					</view>
+				</div> -->
+			</div>
+			
+			<!-- 标签建议框 -->
+			
+			<!-- <view v-if="showTags">
+		      <ul>
+		        <li v-for="">
+		          {{ tag.label }}
+			    </li>
+		      </ul>
+		    </view> -->
 		</div>
 		
 		<!-- 主体部分，可滑动查看他人笔记 -->
@@ -43,24 +74,7 @@
 		</div>
 		
 		<!-- 底部导航栏 -->
-		<div class="navbar">
-		  <div class="nav-item" 
-		  :class="{ active: activeTab === 'community' }"
-		  @click="goToCommunity">
-		    <i class="iconfont icon-shequ"></i>
-		    <span>社区</span>
-		  </div>
-		  <div class="creat-item" @click="goToAddNote">
-		    <i class="iconfont icon-add"></i>
-		    <span>＋</span>
-		  </div>
-		  <div class="nav-item" 
-		  :class="{ active: activeTab === 'mine' }"
-		  @click="goToMine">
-		    <i class="iconfont icon-wode"></i>
-		    <span>我的</span>
-		  </div>
-		</div>
+		<uni-tab-bar :list="tabBarList" @click="handleTabClick"></uni-tab-bar>
 	</view>
   </div>
 </template>
@@ -70,8 +84,16 @@ import UniIcons from '@/uni_modules/uni-icons/components/uni-icons/uni-icons.vue
 export default {
   data() {
     return {
+	  showTags: false,
+	  chosenTags: 0,
 	  keyword:'',
       activeTab: 'community',
+      tabBarList: [],
+	  tags: [
+		  { label: '原神', value: '原神'},
+		  { label: '崩坏：星穹铁道', value: '崩坏：星穹铁道'},
+		  { label: '米哈游', value: '米哈游'},
+	  ],
 	  notes: [
 	    { 
 	      title: '原神日记', 
@@ -116,9 +138,47 @@ export default {
 	  ]
     }
   },
+  mounted() {
+      // 异步加载 pages.json 文件
+      uni.request({
+        url: '/pages.json',
+        success: (res) => {
+          if (res.data && res.data.pages) {
+            this.tabBarList = res.data.pages;
+          }
+        },
+      });
+  },
   methods: {
+	  redirectToSearch() {
+		uni.redirectTo({
+		  url: '/pages/index/search'
+		});  
+	  },
+	  showDropdown() {
+		  if (this.chosenTags < 3) {
+			  this.showTags = !this.showTags;
+			  this.chosenTags++;
+		  }
+	  },
+	//展示标签栏
+	focus() {
+	      this.showTags = true;
+	},
+	blur() {
+      // 使用定时器延迟隐藏复选框，以防止点击复选框时无法选择选项
+      setTimeout(() => {
+        this.showTags = false; // 在失焦时隐藏复选框
+      }, 200);
+	},
+	cancel() {
+		
+	},
+	clear() {
+		this.showTags = false;
+	},
 	//按下enter搜索
-	searchNotes() {
+	search() {
 		//获取搜索栏输入值
 		const keyword = this.keyword;
 		console.log(keyword);
@@ -127,32 +187,36 @@ export default {
 	toggleStarFilled(index) {
 	    this.notes[index].starFilled = !this.notes[index].starFilled;
 		this.notes[index].starColor = this.notes[index].starFilled ? '#F5DEB3' : '';
-	},
-    // 点击导航栏中的“社区”按钮
-    goToCommunity() {
-      uni.redirectTo({
-        url: '/pages/index/index'
-      })
-    },
+	}
+  //   // 点击导航栏中的“社区”按钮
+  //   goToCommunity() {
+  //     uni.redirectTo({
+  //       url: '/pages/index/index'
+  //     })
+  //   },
     
-    // 点击导航栏中的“我的”按钮
-    goToMine() {
-      uni.redirectTo({
-        url: '/pages/index/user'
-      })
-    },
+  //   // 点击导航栏中的“我的”按钮
+  //   goToMine() {
+  //     uni.redirectTo({
+  //       url: '/pages/index/user'
+  //     })
+  //   },
     
-    // 点击导航栏中的“新建笔记”按钮
-    goToAddNote() {
-		uni.navigateTo({
-		  url: '../notes/selectCategory/selectCategory'
-		});
-      // 这里填写跳转到新建笔记页面的代码
-    }
+  //   // 点击导航栏中的“新建笔记”按钮
+  //   goToAddNote() {
+		// uni.navigateTo({
+		//   url: '../notes/selectCategory/selectCategory'
+		// });
+  //     // 这里填写跳转到新建笔记页面的代码
+  //   },
+	// handleTabClick(index) {
+	//       // 处理点击事件
+	//       console.log('Tab clicked', index);
+	// }
   },
   components: {
 	  UniIcons
-  }
+  },
 }
 </script>
 
@@ -166,52 +230,37 @@ export default {
     background: linear-gradient(to bottom, #3D3170, #7B68EE);
   }
   
-  
-  .search-bar {
+  .search-button {
+	width: 80%;
     height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-	z-index: 100;
-    
-    input {
-      width: 80%;
-      height: 30px;
-      background-color: #f5f5f5;
-      border-radius: 15px;
-      padding: 0 10px;
-      box-sizing: border-box;
-      border: thin solid;
-      outline: none;
-    }
-	
-	.search-button{
-	  width: 20%; /* 调整宽度以给按钮留出空间 */
-	  font-size: 100%;
-	  height: 30px;
-	  margin-left: 5px; /* 添加边距以在输入框和按钮之间创建间隔 */
-      background-color: #8C7DEE;
-      color: #fff;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-      outline: none;
-      display: flex; /* 使用弹性盒子布局 */
-      justify-content: center; /* 水平居中 */
-      align-items: center; /* 垂直居中 */
-	}
+  }
+  
+  .dropdown-wrapper {
+	  width: 80%;
+  }
+  
+  .uni-list {
+	  border: thin solid;
+	  background-color: #F7F7FF;
+  }
+  
+  .uni-list-cell {
+  	justify-content: flex-start
   }
   
   .note-list-container {
 	  max-width: 100%;
-      height: 400px; 
+      height: 500px; 
       overflow-y: scroll; /* 允许垂直滚动 */
 	  overflow-x: hidden;
     }
   
   .note-list {
 	max-width: 100%;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 30px);
     overflow-y: auto;
 	overflow-x: hidden;
 	  

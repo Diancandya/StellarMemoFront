@@ -43,7 +43,7 @@
 		</div>
 		
 		<!-- 底部导航栏 -->
-		<div class="navbar">
+		<!-- <div class="navbar">
 		  <div class="nav-item" 
 		  :class="{ active: activeTab === 'community' }"
 		  @click="goToCommunity">
@@ -60,7 +60,9 @@
 		    <i class="iconfont icon-wode"></i>
 		    <span>我的</span>
 		  </div>
-		</div>
+		</div> -->
+		
+		
 	</view>
   </div>
 </template>
@@ -204,14 +206,14 @@ export default {
   
   .note-list-container {
 	  max-width: 100%;
-      height: 400px; 
+      height: 500px; 
       overflow-y: scroll; /* 允许垂直滚动 */
 	  overflow-x: hidden;
     }
   
   .note-list {
 	max-width: 100%;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 30px);
     overflow-y: auto;
 	overflow-x: hidden;
 	  

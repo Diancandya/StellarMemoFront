@@ -56,32 +56,37 @@ export default {
 <style scoped>
 .container {
   display: flex;
-  flex-direction: column;
+  
 }
 
-.row {
+.column {
+	
+	flex-direction: column;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+   align-items: center;
   margin-bottom: 20rpx;
+  width:100%
 }
 
 .cell {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 45%;
-  padding: 10rpx;
+  width: 100%;
+  padding: 30rpx;
   background-color: #f0f0f0;
 }
 
 .image {
-  width: 100%;
-  height: 200rpx;
+  width:400rpx;
+  height:300rpx;
+
 }
 
 .text {
   margin-top: 10rpx;
-  font-size: 24rpx;
+  font-size: 36rpx;
   color: #333333;
 }
 </style>

@@ -48,14 +48,14 @@
 }
 .community .note-list-container {
   max-width: 100%;
-  height: 400px;
+  height: 500px;
   overflow-y: scroll;
   /* 允许垂直滚动 */
   overflow-x: hidden;
 }
 .community .note-list {
   max-width: 100%;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 30px);
   overflow-y: auto;
   overflow-x: hidden;
   /* 添加样式，用于展示他人笔记 */

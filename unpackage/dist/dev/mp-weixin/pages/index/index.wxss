@@ -9,53 +9,33 @@
   position: relative;
   background: linear-gradient(to bottom, #3D3170, #7B68EE);
 }
-.community .search-bar {
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 100;
-}
-.community .search-bar input {
+.community .search-button {
   width: 80%;
   height: 30px;
-  background-color: #f5f5f5;
-  border-radius: 15px;
-  padding: 0 10px;
-  box-sizing: border-box;
-  border: thin solid;
-  outline: none;
-}
-.community .search-bar .search-button {
-  width: 20%;
-  /* 调整宽度以给按钮留出空间 */
-  font-size: 100%;
-  height: 30px;
-  margin-left: 5px;
-  /* 添加边距以在输入框和按钮之间创建间隔 */
-  background-color: #8C7DEE;
-  color: #fff;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-  outline: none;
   display: flex;
-  /* 使用弹性盒子布局 */
   justify-content: center;
-  /* 水平居中 */
   align-items: center;
-  /* 垂直居中 */
+}
+.community .dropdown-wrapper {
+  width: 80%;
+}
+.community .uni-list {
+  border: thin solid;
+  background-color: #F7F7FF;
+}
+.community .uni-list-cell {
+  justify-content: flex-start;
 }
 .community .note-list-container {
   max-width: 100%;
-  height: 400px;
+  height: 500px;
   overflow-y: scroll;
   /* 允许垂直滚动 */
   overflow-x: hidden;
 }
 .community .note-list {
   max-width: 100%;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 30px);
   overflow-y: auto;
   overflow-x: hidden;
   /* 添加样式，用于展示他人笔记 */

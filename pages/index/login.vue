@@ -1,12 +1,11 @@
 <template>
 	<view class="content">
-		<image class="logo" :src="logoUrl"></image>
-		<view class="text-area">
+		<image class="logo" :src="headerUrl"></image>
+		<view class="is-textarea">
 			<text class="title">{{nickName}}</text>
 		</view>
-		<view class="text-area button-style" @click="login()">
-			<u-button size="medium">夜雨</u-button>
-			登录
+		<view class="is-textarea button-style" @click="login()">
+			<b>登录</b>
 		</view>
 	</view>
 </template>
@@ -15,34 +14,35 @@
 	export default {
 		data() {
 			return {
-				nickName: 'Hello',
-				logoUrl:"../../static/logo.png",
+				nickName:'Hello',
+				headerUrl:'../../static/logo.png'
 			}
 		},
 		onLoad() {
-
+			
 		},
 		methods: {
-			
 			login(){
-				var that=this
+				var that = this
 				uni.showModal({
-					mask:true,
+					mask: true,
 					title:'温馨提示',
-					content:'授权微信登录后才能正常使用微信小程序功能',
+					content:'授权微信登录后才能正常使用小程序功能',
 					success(res){
 						if(res.confirm){
 							uni.getUserProfile({
-								desc:'获取您的昵称、头像',
-								success: userRes=>{
+								desc:'获取你的昵称、头像',
+								success: userRes =>{
+								console.log("shabi\n");
 									if(userRes.errMsg == 'getUserProfile:ok' && userRes.userInfo != undefined){
 										var userInfo = {
 											avatarUrl: userRes.userInfo.avatarUrl,
-											nickName:userRes.userInfo.nickName 
-										}	
+											nickName: userRes.userInfo.nickName
+										}
 										that.nickName = userRes.userInfo.nickName
-										that.logoUrl = userRes.userInfo.avatarUrl
-										that.headerUrl = getUserOpenId(userInfo)
+										that.headerUrl = userRes.userInfo.avatarUrl
+										
+										that.getUserOpenId(userInfo)
 									}else{
 										uni.showToast({
 											icon:"none",
@@ -50,33 +50,78 @@
 										})
 									}
 								},
-								fail: error=>{}
+								fail: error =>{}
 							});
-						}else if(res.cancel){}
+						}else if (res.cancle){}
 					}
 				});
 			},
+			
 			getUserOpenId(userInfo){
 				var that = this
 				uni.login({
 					provider: 'weixin',
 					success(loginAuth){
-						var data ={'code':loginAuth.code}
-						var path = '/user/getOpenId'
-						that.$http(path,data).then((response)=>{
-							userInfo['Openid'] = response
+						var data = {'code':loginAuth.code}
+						var path = 'http://localhost:8083/user/wxLogin'
+						uni.request({
+								url: path,
+								method: 'POST',
+								data: data
+							}).then((response)=>{
+							userInfo['openid'] = response.data.data
+							const cookies=response.cookies
+							const openid=response.cookies.openid
+							wx.setStorageSync('cookies',cookies)
+							wx.setStorageSync('openid',openid)
 							console.log(userInfo)
 						})
 					}
 				})
 			}
-			
-			
 		}
 	}
-	
 </script>
 
 <style>
+.content{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 80rpx;
+	background-color: #fff;
+	height: 100vh;
+}
+.logo {
+	width: 200rpx;
+	height: 200rpx;
+	margin-bottom: 60rpx;
+}
 
+.is-textarea {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	background-color: #fff;
+	margin-bottom: 40rpx;
+}
+
+.title {
+	font-size: 32rpx;
+	color: #black;
+	font-weight:bold;
+}
+
+.button-style {
+	width: 200rpx;
+	height: 68rpx;
+	border-radius: 10%;
+	background-color: #00f;
+	cursor:pointer;
+}
+
+.button-style b {
+    font-weight:bold; /* 将按钮内部的文本加粗 */
+}
 </style>

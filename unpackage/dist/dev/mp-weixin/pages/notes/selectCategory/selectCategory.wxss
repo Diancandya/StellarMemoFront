@@ -1,25 +1,30 @@
 
-.container {
+.row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
   padding: 20rpx;
 }
-.dailyNotes,
-.mindNotes {
+.notesCategory {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 1;
 }
 .image {
-  width: 200rpx;
-  height: 200rpx;
+  width: 300rpx;
+  height: 300rpx;
 }
 .text {
   margin-top: 10rpx;
-  font-size: 24rpx;
+  font-size: 36rpx;
+}
+.backgroundImage{
+	height: 150vh;
+	width: 300rpx;
+	align-items: center;
+	height: 300rpx;
 }
 
