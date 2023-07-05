@@ -2,23 +2,6 @@
 .container.data-v-54e57760 {
   display: flex;
 }
-.column.data-v-54e57760 {
-	
-	flex-direction: column;
-  display: flex;
-  justify-content: center;
-   align-items: center;
-  margin-bottom: 20rpx;
-  width:100%
-}
-.cell.data-v-54e57760 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding: 30rpx;
-  background-color: #f0f0f0;
-}
 .image.data-v-54e57760 {
   width:400rpx;
   height:300rpx;
@@ -27,5 +10,20 @@
   margin-top: 10rpx;
   font-size: 36rpx;
   color: #333333;
+}
+.demo-uni-row.data-v-54e57760 {
+	margin-bottom: 10px;
+	display: block;
+}
+.grid-item-box-row.data-v-54e57760 {
+		flex: 1;
+		/* position: relative; */
+
+		display: flex;
+
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		padding: 15px 0;
 }
 

@@ -31,6 +31,13 @@
 			</uni-row>
 		</view>
 		<view>
+						<checkbox-group v-model="checkboxValue">
+							<label>
+								<checkbox value="cb" />公开
+							</label>
+						</checkbox-group>
+					</view>
+		<view>
 					<!-- 普通弹窗 -->
 					<uni-popup ref="popup" background-color="#fff" @change="change">
 						<view class="popup-content" :class="{ 'popup-height': type === 'left' || type === 'right' }">
@@ -135,7 +142,8 @@ export default {
     textarea2: '',
     textarea3: '',
     textarea4: '',
-	backimage:'/static/TFQ.png'
+	backimage:'/static/TFQ.png',
+	checkboxValue: [] ,
     };
   },
   methods: {
@@ -167,14 +175,22 @@ export default {
 	     				this.$refs.popup.open(type)
 	     			},
     saveData() {
+		var publicValue
+				 if (this.checkboxValue.includes("cb")) {
+				    publicValue=1
+				 } else {
+				 	publicValue=0
+				     }
 		const openid = wx.getStorageSync('openid')
       const data = {
 		  openid:this.openid,
 		  title:this.titleValue,
+		  selectedTags: this.selectedTags,
         textarea1: this.textarea1,
         textarea2: this.textarea2,
         textarea3: this.textarea3,
-        textarea4: this.textarea4
+        textarea4: this.textarea4,
+		publicValue:this.publicValue,
       };
 
       // 使用UniApp的请求方法发送POST请求到后端

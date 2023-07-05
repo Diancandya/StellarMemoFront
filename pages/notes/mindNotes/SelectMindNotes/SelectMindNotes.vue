@@ -1,34 +1,113 @@
+
+
 <template>
-  <view class="container">
-    <view class="row">
-      <view class="cell" @click="gotoPage5W1H_Notes">
-        <image class="image" src="../../../../static/5W1H.jfif"></image>
-        <text class="text">5W1H</text>
-      </view>
-      <view class="cell" @click="gotoPageTimeFourQuadrants_Notes">
-        <image class="image" src="../../../../static/FTM.jfif"></image>
-        <text class="text">四象限时间管理</text>
-      </view>
-    </view>
-    <view class="row">
-      <view class="cell" @click="gotoPageSWOT_Notes">
-        <image class="image" src="../../../../static/SWOT.jfif"></image>
-        <text class="text">SWOT</text>
-      </view>
-      <view class="cell" @click="gotoPage4">
-        <image class="image" src="/path/to/image4.png"></image>
-        <text class="text">Text 4</text>
-      </view>
-    </view>
-  </view>
+	<!-- <uni-section  type="line" padding> -->
+		<uni-grid :column="2" :highlight="true" @change="change">
+		  <uni-grid-item 
+		  v-for="(item, index) in gridData" 
+		  :index="index" 
+		  :key="index" 
+		
+		  >
+			<view class="grid-item-box" style="background-color: #fff;">
+			  <image class="image" v-if="item" :src="item.image" mode="aspectFit" />
+			  <text class="text" v-if="item">{{ item.text }}</text>
+			</view>
+		  </uni-grid-item>
+		</uni-grid>
+	<!--  </uni-section> -->
+	  
+	<!-- <view class="container">
+		<view>
+		<uni-row class="demo-uni-row" :width="nvueWidth">
+			<uni-col :span="12">
+				<view class="cell" @click="gotoPage5W1H_Notes">
+					<image class="image" src="../../../../static/5W1H.jfif"></image>
+					<text class="text">5W1H</text>
+				  </view>
+			</uni-col>
+			<uni-col :span="12">
+				<view class="cell" @click="gotoPageTimeFourQuadrants_Notes">
+					<image class="image" src="../../../../static/FTM.jfif"></image>
+					<text class="text">四象限时间管理</text>
+				  </view>
+			</uni-col>
+		</uni-row>
+	</view>
+	<view>
+		<uni-row class="demo-uni-row" :width="nvueWidth">
+			<uni-col :span="12">
+				<view class="cell" @click="gotoPageSWOT_Notes">
+					<image class="image" src="../../../../static/SWOT.jfif"></image>
+					<text class="text">SWOT</text>
+				  </view>
+			</uni-col>
+			<uni-col :span="12">
+			</uni-col>
+		</uni-row>
+	</view>
+  </view> -->
 </template>
 
 <script>
 export default {
-
-	
-	
+	data() {
+			return {
+				gutter: 0,
+				nvueWidth: 730,
+				gridData: [
+      			{ image: '../../../../static/5W1H.jfif', text: '5W1H' },
+      			{ image: '../../../../static/FTM.jfif', text: '四象限时间管理' },
+     			{ image: '../../../../static/SWOT.jfif', text: 'SWOT' },
+      			null // 第四个宫格为空
+    			]
+			}
+		},
   methods: {
+	 /* gotoNotePage(index) {
+		  console.log("success")
+	        switch (index) {
+	          case 0:
+	            this.gotoPage5W1H_Notes();
+	            break;
+	          case 1:
+	            this.gotoPageTimeFourQuadrants_Notes();
+	            break;
+	          case 2:
+	            this.gotoPageSWOT_Notes();
+	            break;
+	          // Handle other grid items as needed
+	          default:
+	            break;
+	        }
+	      }, */
+	  change(e) {
+		  /* console.log("1") */
+	  				let {
+	  					index
+	  				} = e.detail
+					/* console.log("2") */
+					switch (index) {
+					  case 0:
+					    this.gotoPage5W1H_Notes();
+					    break;
+					  case 1:
+					    this.gotoPageTimeFourQuadrants_Notes();
+					    break;
+					  case 2:
+					    this.gotoPageSWOT_Notes();
+					    break;
+					  // Handle other grid items as needed
+					  default:
+					    break;
+					}
+	  				/* this.list[index].badge && this.list[index].badge++ */
+	 /* console.log("3") */
+	  				/* uni.showToast({
+	  					title: `点击第${index+1}个宫格`,
+	  					icon: 'none'
+	  				}) */
+	  			},
     gotoPage5W1H_Notes() {
       uni.navigateTo({
         url: '../5W1H_Notes/5W1H_Notes'
@@ -44,11 +123,8 @@ export default {
         url: '../SWOT_Notes/SWOT_Notes'
       });
     },
-    gotoPage4() {
-      uni.navigateTo({
-        url: '/pages/page4'
-      });
-    },
+
+	
   }
 };
 </script>
@@ -59,24 +135,6 @@ export default {
   
 }
 
-.column {
-	
-	flex-direction: column;
-  display: flex;
-  justify-content: center;
-   align-items: center;
-  margin-bottom: 20rpx;
-  width:100%
-}
-
-.cell {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding: 30rpx;
-  background-color: #f0f0f0;
-}
 
 .image {
   width:400rpx;
@@ -89,4 +147,20 @@ export default {
   font-size: 36rpx;
   color: #333333;
 }
+.demo-uni-row {
+	margin-bottom: 10px;
+	display: block;
+}
+.grid-item-box-row {
+		flex: 1;
+		// position: relative;
+		/* #ifndef APP-NVUE */
+		display: flex;
+		/* #endif */
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		padding: 15px 0;
+	}
 </style>
+

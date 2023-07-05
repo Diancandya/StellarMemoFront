@@ -344,6 +344,13 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
@@ -361,7 +368,8 @@ var _default = {
       textarea2: '',
       textarea3: '',
       textarea4: '',
-      backimage: '/static/TFQ.png'
+      backimage: '/static/TFQ.png',
+      checkboxValue: []
     };
   },
   methods: {
@@ -393,14 +401,22 @@ var _default = {
       this.$refs.popup.open(type);
     },
     saveData: function saveData() {
+      var publicValue;
+      if (this.checkboxValue.includes("cb")) {
+        publicValue = 1;
+      } else {
+        publicValue = 0;
+      }
       var openid = wx.getStorageSync('openid');
       var data = {
         openid: this.openid,
         title: this.titleValue,
+        selectedTags: this.selectedTags,
         textarea1: this.textarea1,
         textarea2: this.textarea2,
         textarea3: this.textarea3,
-        textarea4: this.textarea4
+        textarea4: this.textarea4,
+        publicValue: this.publicValue
       };
 
       // 使用UniApp的请求方法发送POST请求到后端

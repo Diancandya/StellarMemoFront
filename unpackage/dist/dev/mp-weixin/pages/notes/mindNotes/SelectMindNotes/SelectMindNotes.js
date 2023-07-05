@@ -14,6 +14,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
+try {
+  components = {
+    uniGrid: function () {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-grid/components/uni-grid/uni-grid */ "uni_modules/uni-grid/components/uni-grid/uni-grid").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-grid/components/uni-grid/uni-grid.vue */ 172))
+    },
+    uniGridItem: function () {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-grid/components/uni-grid-item/uni-grid-item */ "uni_modules/uni-grid/components/uni-grid-item/uni-grid-item").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-grid/components/uni-grid-item/uni-grid-item.vue */ 179))
+    },
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
 var render = function () {
   var _vm = this
   var _h = _vm.$createElement
@@ -82,8 +108,94 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
+  data: function data() {
+    return {
+      gutter: 0,
+      nvueWidth: 730,
+      gridData: [{
+        image: '../../../../static/5W1H.jfif',
+        text: '5W1H'
+      }, {
+        image: '../../../../static/FTM.jfif',
+        text: '四象限时间管理'
+      }, {
+        image: '../../../../static/SWOT.jfif',
+        text: 'SWOT'
+      }, null // 第四个宫格为空
+      ]
+    };
+  },
+
   methods: {
+    /* gotoNotePage(index) {
+      console.log("success")
+           switch (index) {
+             case 0:
+               this.gotoPage5W1H_Notes();
+               break;
+             case 1:
+               this.gotoPageTimeFourQuadrants_Notes();
+               break;
+             case 2:
+               this.gotoPageSWOT_Notes();
+               break;
+             // Handle other grid items as needed
+             default:
+               break;
+           }
+         }, */
+    change: function change(e) {
+      /* console.log("1") */
+      var index = e.detail.index;
+      /* console.log("2") */
+      switch (index) {
+        case 0:
+          this.gotoPage5W1H_Notes();
+          break;
+        case 1:
+          this.gotoPageTimeFourQuadrants_Notes();
+          break;
+        case 2:
+          this.gotoPageSWOT_Notes();
+          break;
+        // Handle other grid items as needed
+        default:
+          break;
+      }
+      /* this.list[index].badge && this.list[index].badge++ */
+      /* console.log("3") */
+      /* uni.showToast({
+      	title: `点击第${index+1}个宫格`,
+      	icon: 'none'
+      }) */
+    },
     gotoPage5W1H_Notes: function gotoPage5W1H_Notes() {
       uni.navigateTo({
         url: '../5W1H_Notes/5W1H_Notes'
@@ -97,11 +209,6 @@ var _default = {
     gotoPageSWOT_Notes: function gotoPageSWOT_Notes() {
       uni.navigateTo({
         url: '../SWOT_Notes/SWOT_Notes'
-      });
-    },
-    gotoPage4: function gotoPage4() {
-      uni.navigateTo({
-        url: '/pages/page4'
       });
     }
   }

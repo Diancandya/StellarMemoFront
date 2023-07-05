@@ -49,6 +49,13 @@
 	  		</uni-col>
 	  	</uni-row>
 	  </view>
+	<view>
+					<checkbox-group v-model="checkboxValue">
+						<label>
+							<checkbox value="cb" />公开
+						</label>
+					</checkbox-group>
+				</view>
 	  <view>
 	  			<!-- 普通弹窗 -->
 	  			<uni-popup ref="popup" background-color="#fff" @change="change">
@@ -127,7 +134,8 @@ export default {
       textS: '' ,
 	  textW: '' ,
 	  textO: '' ,
-	  textT: ''
+	  textT: '',
+	  checkboxValue: [] ,
     };
   },
   methods: {
@@ -159,6 +167,12 @@ export default {
 	     				this.$refs.popup.open(type)
 	     			},
     save() {
+		var publicValue
+				 if (this.checkboxValue.includes("cb")) {
+				    publicValue=1
+				 } else {
+				 	publicValue=0
+				     }
 		const openid = wx.getStorageSync('openid')
       // 发送POST请求给后端，将textarea的内容发送过去
       uni.request({
@@ -168,7 +182,8 @@ export default {
 		openid:this.openid,
 		title:this.titleValue,
 		selectedTags: this.selectedTags,
-        content: this.text
+        content: this.text,
+		publicValue:this.publicValue,
         },
         success: (res) => {
           console.log('保存成功');

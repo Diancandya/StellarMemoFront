@@ -333,6 +333,13 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
@@ -353,7 +360,8 @@ var _default = {
       textS: '',
       textW: '',
       textO: '',
-      textT: ''
+      textT: '',
+      checkboxValue: []
     };
   },
   methods: {
@@ -385,6 +393,12 @@ var _default = {
       this.$refs.popup.open(type);
     },
     save: function save() {
+      var publicValue;
+      if (this.checkboxValue.includes("cb")) {
+        publicValue = 1;
+      } else {
+        publicValue = 0;
+      }
       var openid = wx.getStorageSync('openid');
       // 发送POST请求给后端，将textarea的内容发送过去
       uni.request({
@@ -394,7 +408,8 @@ var _default = {
           openid: this.openid,
           title: this.titleValue,
           selectedTags: this.selectedTags,
-          content: this.text
+          content: this.text,
+          publicValue: this.publicValue
         },
         success: function success(res) {
           console.log('保存成功');

@@ -382,6 +382,12 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
@@ -406,7 +412,8 @@ var _default = {
       questionsWhoBoxes: [],
       answerWhoBoxes: [],
       questionsHowBoxes: [],
-      answerHowBoxes: []
+      answerHowBoxes: [],
+      checkboxValue: []
     };
   },
   methods: {
@@ -527,11 +534,18 @@ var _default = {
       });*/
 
       var openid = wx.getStorageSync('openid');
+      var publicValue;
+      if (this.checkboxValue.includes("cb")) {
+        publicValue = 1;
+      } else {
+        publicValue = 0;
+      }
       var noteData = {
         openid: this.openid,
         title: this.titleValue,
         selectedTags: this.selectedTags,
-        data: this.data
+        data: this.data,
+        publicValue: this.publicValue
       };
       uni.request({
         url: '后端',

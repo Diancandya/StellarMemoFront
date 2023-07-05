@@ -69,6 +69,7 @@
 					v-model="titleValue"
 					/>
 				</view>
+				
 				<view>
 					<uni-row class="demo-uni-row" :gutter="gutter" :width="nvueWidth">
 						<uni-col v-for="(tag, index) in tags_1" :key="index" :span="4" >
@@ -96,6 +97,13 @@
 				 @statuschange="onStatusChange" :read-only="readOnly" @ready="onEditorReady" @blur="getContents">
 				</editor>
 			</view>
+	<view>
+					<checkbox-group v-model="checkboxValue">
+						<label>
+							<checkbox value="cb" />公开
+						</label>
+					</checkbox-group>
+				</view>
 			<view>
 						<!-- 普通弹窗 -->
 						<uni-popup ref="popup" background-color="#fff" @change="change">
@@ -169,6 +177,7 @@
 				tags_4: ['动漫','职场','机车','家装','文化'],
 				selectedTags: [],
 				max: 10,
+				checkboxValue: [] ,
 			}
 		},
 		props:["editorDetail"],
@@ -278,6 +287,13 @@
 				})
 			},
 			saveNotes(){
+				var publicValue
+						 if (this.checkboxValue.includes("cb")) {
+						    publicValue=1
+						 } else {
+						 	publicValue=0
+						     }
+
 				Headers={
 					'openid':wx.getStorageSync('openid')
 				}
@@ -286,6 +302,7 @@
 				  title: this.titleValue,
 				  selectedTags: this.selectedTags,
 				  body: this.getContents(),
+				 publicValue:this.publicValue,
 				};
 				uni.request({
 				  url: 'http://localhost:8083/user/register', // 后端接收接口的 URL

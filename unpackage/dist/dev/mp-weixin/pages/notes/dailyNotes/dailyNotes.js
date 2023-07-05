@@ -379,6 +379,14 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
@@ -394,7 +402,8 @@ var _default = {
       tags_3: ['音乐', '护肤', '壁纸', '手工', '心理'],
       tags_4: ['动漫', '职场', '机车', '家装', '文化'],
       selectedTags: [],
-      max: 10
+      max: 10,
+      checkboxValue: []
     };
   },
   props: ["editorDetail"],
@@ -505,6 +514,12 @@ var _default = {
       });
     },
     saveNotes: function saveNotes() {
+      var publicValue;
+      if (this.checkboxValue.includes("cb")) {
+        publicValue = 1;
+      } else {
+        publicValue = 0;
+      }
       Headers = {
         'openid': wx.getStorageSync('openid')
       };
@@ -512,7 +527,8 @@ var _default = {
         Headers: Headers,
         title: this.titleValue,
         selectedTags: this.selectedTags,
-        body: this.getContents()
+        body: this.getContents(),
+        publicValue: this.publicValue
       };
       uni.request({
         url: 'http://localhost:8083/user/register',
