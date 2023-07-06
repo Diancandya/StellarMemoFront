@@ -65,8 +65,6 @@ import UniIcons from '@/uni_modules/uni-icons/components/uni-icons/uni-icons.vue
 export default {
   data() {
     return {
-	  showTags: false,
-	  chosenTags: 0,
 	  keyword:'',
       activeTab: 'community',
       tabBarList: [],
@@ -136,9 +134,23 @@ export default {
 	  });  
 	},
 	turnToNote(note) {
-		uni.navigateTo({
-			url: '/pages/notes/browseNotes/browseNotes?note=' + encodeURIComponent(JSON.stringify(note)),
+		const queryParams = {
+			title: note.title,
+			tags: note.tags,
+			preview: note.preview,
+			image: note.image,
+		};
+		
+		const queryString = Object.keys(queryParams).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(queryParams[key])}`).join('&');
+		
+		const url = `../notes/browseNotes/browseNotes?${queryString}`;
+		console.log(url);
+		wx.redirectTo({
+			url: url
 		});
+		// uni.navigateTo({
+		// 	url: '/pages/notes/browseNotes/browseNotes?note=' + encodeURIComponent(JSON.stringify(note)),
+		// });
 	  // console.log("clicked");
    //    const clickedNote = this.notes[index];
 

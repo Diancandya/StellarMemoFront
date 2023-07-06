@@ -135,7 +135,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
+/* WEBPACK VAR INJECTION */(function(uni, wx) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -149,8 +149,6 @@ var UniIcons = function UniIcons() {
 var _default = {
   data: function data() {
     return {
-      showTags: false,
-      chosenTags: 0,
       keyword: '',
       activeTab: 'community',
       tabBarList: [],
@@ -215,9 +213,23 @@ var _default = {
       });
     },
     turnToNote: function turnToNote(note) {
-      uni.navigateTo({
-        url: '/pages/notes/browseNotes/browseNotes?note=' + encodeURIComponent(JSON.stringify(note))
+      var queryParams = {
+        title: note.title,
+        tags: note.tags,
+        preview: note.preview,
+        image: note.image
+      };
+      var queryString = Object.keys(queryParams).map(function (key) {
+        return "".concat(encodeURIComponent(key), "=").concat(encodeURIComponent(queryParams[key]));
+      }).join('&');
+      var url = "../notes/browseNotes/browseNotes?".concat(queryString);
+      console.log(url);
+      wx.redirectTo({
+        url: url
       });
+      // uni.navigateTo({
+      // 	url: '/pages/notes/browseNotes/browseNotes?note=' + encodeURIComponent(JSON.stringify(note)),
+      // });
       // console.log("clicked");
       //    const clickedNote = this.notes[index];
 
@@ -240,7 +252,7 @@ var _default = {
   }
 };
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"]))
 
 /***/ }),
 

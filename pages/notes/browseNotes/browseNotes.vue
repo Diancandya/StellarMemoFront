@@ -30,9 +30,23 @@ import UniIcons from '@/uni_modules/uni-icons/components/uni-icons/uni-icons.vue
 export default {
   data() {
     return {
-      note: {} // 接收笔记信息
+      note: {
+		  title: '',
+		  tags: [],
+		  preview: '',
+		  image: '',
+	  } // 接收笔记信息
     };
   },
+  onLoad(options) {
+  	const { title, tags, preview } = options;
+	console.log(title + tags + preview)
+	
+	this.note.title = title;
+	this.note.tags = tags;
+	this.note.preview = preview;
+	// this.note.image = image;
+  }
  //  methods() {
 	// //点击star
 	// toggleStarFilled(index) {
@@ -40,10 +54,10 @@ export default {
 	//   	this.note.starColor = this.note.starFilled ? '#F5DEB3' : '';
 	// }
  //  },
-  mounted() {
-	  const noteString = decodeURIComponent(this.$route.query.note);
-	  this.note = JSON.parse(noteString);
-  }
+  // mounted() {
+	 //  const noteString = decodeURIComponent(this.$route.query.note);
+	 //  this.note = JSON.parse(noteString);
+  // }
   // created() {
   //   const noteString = this.$route.query.note;
   //   this.note = JSON.parse(noteString);

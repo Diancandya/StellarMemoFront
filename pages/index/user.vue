@@ -1,16 +1,6 @@
 <template>
   <div class="community">
     <view class="background">
-		<div>
-			<div class="search-container" >
-				<!-- 搜索页面跳转按钮 -->
-				<button class="search-button" @click="redirectToSearch">
-					<UniIcons type="search"></UniIcons>
-					查找
-				</button>
-			</div>
-		</div>
-		
 		<!-- 主体部分，可滑动查看他人笔记 -->
 		<div class="note-list-container">
 		  <div class="note-list">
@@ -57,8 +47,6 @@ import UniIcons from '@/uni_modules/uni-icons/components/uni-icons/uni-icons.vue
 export default {
   data() {
     return {
-	  keyword:'',
-      activeTab: 'community',
       tabBarList: [],
 	  notes: [
 	    { 
@@ -116,11 +104,6 @@ export default {
       });
   },
   methods: {
-	  redirectToSearch() {
-		uni.redirectTo({
-		  url: '/pages/index/search'
-		});  
-	  },
 	//点击star
 	toggleStarFilled(index) {
 	    this.notes[index].starFilled = !this.notes[index].starFilled;
@@ -143,14 +126,6 @@ export default {
     background: linear-gradient(to bottom, #3D3170, #7B68EE);
   }
   
-  .search-button {
-	width: 80%;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
   .note-list-container {
 	  max-width: 100%;
       height: 500px; 
@@ -160,7 +135,7 @@ export default {
   
   .note-list {
 	max-width: 100%;
-    height: calc(100vh - 30px);
+    height: calc(100vh);
     overflow-y: auto;
 	overflow-x: hidden;
 	  

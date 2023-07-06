@@ -9,13 +9,6 @@
   position: relative;
   background: linear-gradient(to bottom, #3D3170, #7B68EE);
 }
-.community .search-button {
-  width: 80%;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .community .note-list-container {
   max-width: 100%;
   height: 500px;
@@ -25,7 +18,7 @@
 }
 .community .note-list {
   max-width: 100%;
-  height: calc(100vh - 30px);
+  height: calc(100vh);
   overflow-y: auto;
   overflow-x: hidden;
   /* 添加样式，用于展示他人笔记 */

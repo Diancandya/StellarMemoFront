@@ -149,8 +149,6 @@ var UniIcons = function UniIcons() {
 var _default = {
   data: function data() {
     return {
-      keyword: '',
-      activeTab: 'community',
       tabBarList: [],
       notes: [{
         title: '原神日记',
@@ -203,11 +201,6 @@ var _default = {
     });
   },
   methods: {
-    redirectToSearch: function redirectToSearch() {
-      uni.redirectTo({
-        url: '/pages/index/search'
-      });
-    },
     //点击star
     toggleStarFilled: function toggleStarFilled(index) {
       this.notes[index].starFilled = !this.notes[index].starFilled;
