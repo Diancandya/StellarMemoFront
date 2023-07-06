@@ -119,7 +119,9 @@
       <textarea class="textarea2" v-model="textarea3" maxlength="-1"></textarea>
       <textarea class="textarea2" v-model="textarea4" maxlength="-1"></textarea>
     </view>
+	<view class="buttonContainer">
     <button class="save-btn" @click="saveData">保存</button>
+	</view>
   </view>
   </view>
 </template>
@@ -215,9 +217,9 @@ export default {
 <style>
 .container {
   
-  flex-direction: column;
+
   align-items: flex-start;
- 
+  justify-content: center;
   width:750rpx;
   height: 1420rpx;
 }
@@ -247,15 +249,23 @@ export default {
   margin-top: 10rpx;
   margin-right: 10rpx;
 }
-
+.buttonContainer{
+	display: flex;
+	  justify-content: center;
+	  align-items: center;
+}
 .save-btn {
-  width: 120rpx;
+	
+  width: 240rpx;
   height: 60rpx;
-  background-color: #007aff;
-  color: #fff;
+  background-color: #545D89;
+  color: #E4BF98;
   border-radius: 5rpx;
   text-align:center;
   line-height: 60rpx;
+  position: fixed;
+  bottom: 10rpx;;
+    bottom: 10rpx;
 }
 .noteTitle{
 		height:35px;

@@ -240,6 +240,7 @@ export default {
 
 .save-button {
   align-self: flex-end;
+  background-color: #F4C8D8;
   margin-top: 10px;
 }
 .noteTitle{
@@ -273,14 +274,16 @@ export default {
 				display: flex;
 				/* justify-content: center;
 				align-items: center; */
-				border: 2px solid #000;
+				border: 2px #d3d3d3;
 				cursor: pointer;
-				font-weight: bold;
 				font-size: 14px;
+				color:#FF5B00;
+				background-color: #FFFAD7;
 			  }
 			
 			.tagButton-filled {
-				background-color: #0000003a;
-				color: #fff;
+				font-weight: bold;
+				background-color: #E97777;
+				color: #FEF2F4;
 			  }
 </style>

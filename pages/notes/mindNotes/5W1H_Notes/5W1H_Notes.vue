@@ -26,6 +26,7 @@
 	  			type="plusempty" 
 	  			size="30"
 	  			@click="toggle('bottom')"
+				color="#EBE645"
 	  			>
 	  			</uni-icons>
 	  		</uni-col>
@@ -378,7 +379,7 @@ export default {
 	     return this.selectedTags.includes(index);
 	   },
 	   change(e) {
-	   				console.log('当前模式：' + e.type + ',状态：' + e.show);
+	   				/* console.log('当前模式：' + e.type + ',状态：' + e.show); */
 	   			},
 	   toggle(type) {
 	   				this.type = type
@@ -490,15 +491,16 @@ export default {
 				display: flex;
 				/* justify-content: center;
 				align-items: center; */
-				border: 2px solid #000;
+				/* border: 2px solid #000; */
 				cursor: pointer;
 				font-weight: bold;
 				font-size: 14px;
 			  }
 			
 			.tagButton-filled {
-				background-color: #0000003a;
-				color: #fff;
+				background-color: #AE83CE;
+				/* background-color: #0000003a; */
+				color: #EBE645;
 			  }
 	.save-button{
 		height: auto;
