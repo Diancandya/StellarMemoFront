@@ -40,13 +40,24 @@
   margin-top: 10px;
 }
 .noteTitle{
+
+	  margin-bottom: 25rpx;
+	  margin-left: 0;
+	  margin-right: 0;
 		height:35px;
 		font-size: 25px;
 }
 .demo-uni-row {
-			margin-bottom: 0px;
+		margin-top: 25rpx;
+		  margin-bottom: 25rpx;
+		  margin-left: 0;
+		  margin-right: 0;
 }
 .demo-uni-col {
+			margin-top: 25rpx;
+			  margin-bottom: 25rpx;
+			  margin-left: 0;
+			  margin-right: 0;
 				height: 36px;
 				border-radius: 0px;
 }
@@ -60,6 +71,10 @@
 				background-color: #e5e9f2;
 }
 .tagButton {
+
+				  margin-bottom: 25rpx;
+				  margin-left: 0;
+				  margin-right: 0;
 				width: 100%;
 				height: 36px;
 				display: flex;
@@ -75,5 +90,11 @@
 				font-weight: bold;
 				background-color: #E97777;
 				color: #FEF2F4;
+}
+.checkbox{
+margin-top: 25rpx;
+  margin-bottom: 25rpx;
+  margin-left: 0;
+  margin-right: 0;
 }
 

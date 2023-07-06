@@ -160,7 +160,7 @@
 			<input ref="aHowInput" class="aHow" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
 		</view>
 	<view>
-					<checkbox-group v-model="checkboxValue">
+					<checkbox-group v-model="checkboxValue" class="checkbox">
 						<label>
 							<checkbox value="cb" />公开
 						</label>
@@ -404,50 +404,74 @@ export default {
 		font-size:30px;
 	}
 	.qWhat{
+		margin-bottom: 15rpx;
+		height: 35px;
 		color: #96BC00;
 		font-size: 25px;
 		}
 	.aWhat{
+		margin-bottom: 15rpx;
+		height: 35px;
 		color: #F2FEDC;
 		font-size:25px;
 	}
 	.qWhere{
+		margin-bottom: 15rpx;
+		height: 35px;
 			color: #96BC00;
 			font-size: 25px;
 			}
 	.aWhere{
+		margin-bottom: 15rpx;
+		height: 35px;
 			color: #F2FEDC;
 			font-size:25px;
 		}
 	.qWhen{
+		margin-bottom: 15rpx;
+		height: 35px;
 			color: #96BC00;
 			font-size: 25px;
 			}
 	.aWhen{
+		margin-bottom: 15rpx;
+		height: 35px;
 			color: #F2FEDC;
 			font-size:25px;
 		}
 	.qWhy{
+		margin-bottom: 15rpx;
+		height: 35px;
 			color: #96BC00;
 			font-size: 25px;
 			}
 	.aWhy{
+		margin-bottom: 15rpx;
+		height: 35px;
 			color: #F2FEDC;
 			font-size:25px;
 		}
 	.qWho{
+		margin-bottom: 15rpx;
+		height: 35px;
 		color:#96BC00;
 		font-size: 25px;
 		}
 	.aWho{
+		margin-bottom: 15rpx;
+		height: 35px;
 		color: #F2FEDC;
 		font-size:25px;
 	}
 	.qHow{
+		margin-bottom: 15rpx;
+		height: 35px;
 		color: #96BC00;
 		font-size: 25px;
 		}
 	.aHow{
+		margin-bottom: 15rpx;
+		height: 35px;
 		color: #F2FEDC;
 		font-size:25px;
 	}
@@ -495,6 +519,8 @@ export default {
 				cursor: pointer;
 				font-weight: bold;
 				font-size: 14px;
+				background-color: #DAF5FF;
+				color:#146C94;
 			  }
 			
 			.tagButton-filled {
@@ -508,5 +534,9 @@ export default {
 		    color:#FFF9EA; /* 设置字体颜色为白色 */
 			font-size: 25px;
 			font-weight: bold;
+	}
+	.checkbox{
+		margin-top: 25rpx;
+		margin-bottom: 25rpx;
 	}
 </style>

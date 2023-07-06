@@ -12,18 +12,18 @@
     <view class="row">
       <view class="column">
         <view class="block" :style="{ backgroundImage: 'url(' + Simage + ')' }">
-          <textarea v-model="textS" class="textarea" maxlength="160"></textarea>
+          <textarea v-model="textS" class="textarea" maxlength="160" placeholder="Strengths"></textarea>
         </view>
         <view class="block" :style="{ backgroundImage: 'url(' + Wimage + ')' }">
-          <textarea v-model="textW" class="textarea" maxlength="160"></textarea>
+          <textarea v-model="textW" class="textarea" maxlength="160" placeholder="Weaknesses"></textarea>
         </view>
       </view>
       <view class="column">
         <view class="block" :style="{ backgroundImage: 'url(' + Oimage + ')' }">
-          <textarea v-model="textO" class="textarea" maxlength="160"></textarea>
+          <textarea v-model="textO" class="textarea" maxlength="160" placeholder="Opportunities"></textarea>
         </view>
         <view class="block" :style="{ backgroundImage: 'url(' + Timage + ')' }">
-          <textarea v-model="textT" class="textarea" maxlength="160"></textarea>
+          <textarea v-model="textT" class="textarea" maxlength="160" placeholder="Threats"></textarea>
         </view>
       </view>
 	  </view>
@@ -50,7 +50,7 @@
 	  	</uni-row>
 	  </view>
 	<view>
-					<checkbox-group v-model="checkboxValue">
+					<checkbox-group v-model="checkboxValue" class="checkbox">
 						<label>
 							<checkbox value="cb" />公开
 						</label>
@@ -244,14 +244,26 @@ export default {
   margin-top: 10px;
 }
 .noteTitle{
+
+	  margin-bottom: 25rpx;
+	  margin-left: 0;
+	  margin-right: 0;
 		height:35px;
 		font-size: 25px;
 	}
 	.demo-uni-row {
-			margin-bottom: 0px;
+		margin-top: 25rpx;
+		  margin-bottom: 25rpx;
+		  margin-left: 0;
+		  margin-right: 0;
+
 	
 		}
 		.demo-uni-col {
+			margin-top: 25rpx;
+			  margin-bottom: 25rpx;
+			  margin-left: 0;
+			  margin-right: 0;
 				height: 36px;
 				border-radius: 0px;
 			}
@@ -269,6 +281,10 @@ export default {
 			}
 		
 			.tagButton {
+
+				  margin-bottom: 25rpx;
+				  margin-left: 0;
+				  margin-right: 0;
 				width: 100%;
 				height: 36px;
 				display: flex;
@@ -285,5 +301,11 @@ export default {
 				font-weight: bold;
 				background-color: #E97777;
 				color: #FEF2F4;
+			  }
+			  .checkbox{
+margin-top: 25rpx;
+  margin-bottom: 25rpx;
+  margin-left: 0;
+  margin-right: 0;
 			  }
 </style>

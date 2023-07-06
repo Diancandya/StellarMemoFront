@@ -47,6 +47,11 @@ import UniIcons from '@/uni_modules/uni-icons/components/uni-icons/uni-icons.vue
 export default {
   data() {
     return {
+		avatarUrl:'',
+		nickName:'',
+		
+	 /* keyword:'', */
+      activeTab: 'community',
       tabBarList: [],
 	  notes: [
 	    { 
@@ -56,7 +61,7 @@ export default {
 	      image: '../../static/c1.png',
 	      starFilled: false,
 	      starColor:'',//处理star的点击
-	    },
+	    },  
 	    { 
 		  title: '笔记2', 
 	      tags: ['标签3', '标签4'], 
@@ -92,17 +97,17 @@ export default {
 	  ]
     }
   },
-  mounted() {
-      // 异步加载 pages.json 文件
-      uni.request({
-        url: '/pages.json',
-        success: (res) => {
-          if (res.data && res.data.pages) {
-            this.tabBarList = res.data.pages;
-          }
-        },
-      });
+  onLoad(){
+	  const userInfo=wx.getStorageSync('userInfo');
+		  this.avatarUrl = userInfo.avatarUrl;
+		  this.nickName = userInfo.nickName;
   },
+
+
+
+
+
+
   methods: {
 	//点击star
 	toggleStarFilled(index) {
