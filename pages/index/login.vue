@@ -33,7 +33,7 @@
 							uni.getUserProfile({
 								desc:'获取你的昵称、头像',
 								success: userRes =>{
-									wx.setStorageSync('userInfo',userInfo)
+									wx.setStorageSync('userInfo',userRes.userInfo)
 								console.log("shabi\n");
 									if(userRes.errMsg == 'getUserProfile:ok' && userRes.userInfo != undefined){
 										var userInfo = {

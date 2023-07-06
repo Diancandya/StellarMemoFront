@@ -145,6 +145,22 @@ export default {
 </script>
 
 <style lang="scss">
+	.avatar {
+		width: 200rpx;
+		height: 200rpx;
+		margin-bottom: 60rpx;
+	}
+	.nickName{
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		background-color: #fff;
+		margin-bottom: 40rpx;
+		font-size: 32rpx;
+		color: #black;
+		font-weight:bold;
+	}
 .community {
   height: 100vh;
   
