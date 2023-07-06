@@ -1,82 +1,191 @@
 <template>
   <view class="container">
+	  <view class="uni-form-item uni-column" >
+	  	<input 
+	  	class="noteTitle" 
+	  	maxlength=12 
+	  	focus
+	  	placeholder="输入标题（不超过12字）"
+		placeholder-style="color:#489F90;"
+	  	v-model="titleValue"
+	  	/>
+	  </view>
+	  <view>
+	  	<uni-row class="demo-uni-row" :gutter="gutter" :width="nvueWidth">
+	  		<uni-col v-for="(tag, index) in tags_1" :key="index" :span="4" >
+	  		      <button
+	  		        class="tagButton"
+	  				:class="{ 'tagButton-filled': selectedTags.includes(index) }"
+	  		        @click="toggleTagButton(index)"
+	  		      >
+	  		        {{ tag }}
+	  		      </button>
+	  		    </uni-col>
+	  		<uni-col :span="2" offset="1">
+	  			<uni-icons 
+	  			type="plusempty" 
+	  			size="30"
+	  			@click="toggle('bottom')"
+				color="#EBE645"
+	  			>
+	  			</uni-icons>
+	  		</uni-col>
+	  	</uni-row>
+	  </view>
+	  <view>
+	  			<!-- 普通弹窗 -->
+	  			<uni-popup ref="popup" background-color="#fff" @change="change">
+	  				<view class="popup-content" :class="{ 'popup-height': type === 'left' || type === 'right' }">
+	  					<uni-row class="demo-uni-row" :gutter="gutter" :width="nvueWidth">
+	  						<uni-col v-for="(tag, index) in tags_1" :key="index" :span="4" :offset="index > 0 ? 1 : 0">
+	  							 <button
+	  							class="tagButton"
+	  							:class="{ 'tagButton-filled': selectedTags.includes(index) }"
+	  							@click="toggleTagButton(index)"
+	  							>
+	  							{{ tag }}
+	  							</button>
+	  						</uni-col>
+	  					</uni-row>
+	  					<uni-row class="demo-uni-row" :gutter="gutter" :width="nvueWidth">
+	  						<uni-col v-for="(tag, index) in tags_2" :key="index" :span="4" :offset="index > 0 ? 1 : 0">
+	  							 <button
+	  							class="tagButton"
+	  							:class="{ 'tagButton-filled': selectedTags.includes(index+5) }"
+	  							@click="toggleTagButton(index+5)"
+	  							>
+	  							{{ tag }}
+	  							</button>
+	  						</uni-col>
+	  					</uni-row>
+	  					<uni-row class="demo-uni-row" :gutter="gutter" :width="nvueWidth">
+	  						<uni-col v-for="(tag, index) in tags_3" :key="index" :span="4" :offset="index > 0 ? 1 : 0">
+	  							 <button
+	  							class="tagButton"
+	  							:class="{ 'tagButton-filled': selectedTags.includes(index+10) }"
+	  							@click="toggleTagButton(index+10)"
+	  							>
+	  							{{ tag }}
+	  							</button>
+	  						</uni-col>
+	  					</uni-row>
+	  					<uni-row class="demo-uni-row" :gutter="gutter" :width="nvueWidth">
+	  						<uni-col v-for="(tag, index) in tags_4" :key="index" :span="4" :offset="index > 0 ? 1 : 0">
+	  							 <button
+	  							class="tagButton"
+	  							:class="{ 'tagButton-filled': selectedTags.includes(index+15) }"
+	  							@click="toggleTagButton(index+15)"
+	  							>
+	  							{{ tag }}
+	  							</button>
+	  						</uni-col>
+	  					</uni-row>
+	  					</view>
+	  			</uni-popup>
+	  		</view>
+	  
     <view class="analysis-model">
-		<view class="container">
+		<view >
 		  <view class="titleF" >What</view>
 		  <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsWhat" />
 		</view>
-		<input class="qWhat" type="text" placeholder="Question" />
-		<input class="aWhat" type="text" placeholder="Answer" />
+		<input  ref="qWhatInput" class="qWhat" type="text" 
+		placeholder="Question" 
+		placeholder-style="color:#489F90;"
+		/>
+		<input ref="aWhatInput" class="aWhat" type="text" 
+		placeholder="Answer" 
+		placeholder-style="color:#489F90;"/>
 		<view v-for="(questionsWhatBox, qWhatIndex) in questionsWhatBoxes" :key="qWhatindex" >	
-			<input class="qWhat" type="text" placeholder="Question" />
-			<input class="aWhat" type="text" placeholder="Answer" />
+			<input ref="qWhatInput" class="qWhat" type="text" 
+			placeholder="Question" 
+			placeholder-style="color:#489F90;"/>
+			<input ref="aWhatInput" class="aWhat" type="text" 
+			placeholder="Answer"
+			 placeholder-style="color:#489F90;"/>
 		</view>
 		
-		<view class="container">
+		<view >
 		  <view class="titleF" >Where</view>
 		  <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsWhere" />
 		</view>
-		<input class="qWhere" type="text" placeholder="Question" />
-		<input class="aWhere" type="text" placeholder="Answer" />
+		<input ref="qWhereInput" class="qWhere" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
+		<input ref="aWhereInput" class="aWhere" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
 		<view v-for="(questionsWhereBox, qWhereIndex) in questionsWhereBoxes" :key="qWhereindex">	
-			<input class="qWhere" type="text" placeholder="Question" />
-			<input class="aWhere" type="text" placeholder="Answer" />
+			<input ref="qWhereInput" class="qWhere" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
+			<input ref="aWhereInput" class="aWhere" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
 		</view>
 		
-		<view class="container">
+		<view >
 		  <view class="titleF" >When</view>
 		  <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsWhen" />
 		</view>
-		<input class="qWhen" type="text" placeholder="Question" />
-		<input class="aWhen" type="text" placeholder="Answer" />
+		<input ref="qWhenInput" class="qWhen" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
+		<input ref="aWhenInput" class="aWhen" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
 		<view v-for="(questionsWhenBox, qWhenIndex) in questionsWhenBoxes" :key="qWhenindex">	
-			<input class="qWhen" type="text" placeholder="Question" />
-			<input class="aWhen" type="text" placeholder="Answer" />
+			<input ref="qWhenInput" class="qWhen" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
+			<input ref="aWhenInput" class="aWhen" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
 		</view>
 		
-		<view class="container">
+		<view >
 		  <view class="titleF" >Why</view>
 		  <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsWhy" />
 		</view>
-		<input class="qWhy" type="text" placeholder="Question" />
-		<input class="aWhy" type="text" placeholder="Answer" />
+		<input ref="qWhyInput" class="qWhy" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
+		<input ref="aWhyInput" class="aWhy" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
 		<view v-for="(questionsWhyBox, qWhyIndex) in questionsWhyBoxes" :key="qWhyindex">	
-			<input class="qWhy" type="text" placeholder="Question" />
-			<input class="aWhy" type="text" placeholder="Answer" />
+			<input ref="qWhyInput" class="qWhy" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
+			<input ref="aWhyInput" class="aWhy" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
 		</view>
 		
-		<view class="container">
+		<view >
 		  <view class="titleF" >Who</view>
 		  <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsWho" />
 		</view>
-		<input class="qWho" type="text" placeholder="Question" />
-		<input class="aWho" type="text" placeholder="Answer" />
+		<input ref="qWhoInput" class="qWho" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
+		<input ref="aWhoInput" class="aWho" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
 		<view v-for="(questionsWhoBox, qWhoIndex) in questionsWhoBoxes" :key="qWhoindex">	
-			<input class="qWho" type="text" placeholder="Question" />
-			<input class="aWho" type="text" placeholder="Answer" />
+			<input ref="qWhoInput" class="qWho" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
+			<input ref="aWhoInput" class="aWho" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
 		</view>
 		
-		<view class="container">
+		<view >
 		  <view class="titleF" >How</view>
 		  <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsHow" />
 		</view>
-		<input class="qHow" type="text" placeholder="Question" />
-		<input class="aHow" type="text" placeholder="Answer" />
+		<input ref="qHowInput" class="qHow" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
+		<input ref="aHowInput" class="aHow" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
 		<view v-for="(questionsHowBox, qHowIndex) in questionsHowBoxes" :key="qHowindex">	
-			<input class="qHow" type="text" placeholder="Question" />
-			<input class="aHow" type="text" placeholder="Answer" />
+			<input ref="qHowInput" class="qHow" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
+			<input ref="aHowInput" class="aHow" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
 		</view>
-		
+	<view>
+					<checkbox-group v-model="checkboxValue">
+						<label>
+							<checkbox value="cb" />公开
+						</label>
+					</checkbox-group>
+				</view>
       </view>
       <button @click="saveData" class="save-button">保存</button>
     </view>
-  </view>
+
 </template>
 
 <script>
 export default {
   data() {
     return {
+		titleValue:'',
+		type: 'center',
+		gutter: 0,
+		nvueWidth: 730,
+		tags_1: ['情感','摄影','搞笑','游戏','绘画'],
+		tags_2: ['运动','旅行','美食','穿搭','学习'],
+		tags_3: ['音乐','护肤','壁纸','手工','心理'],
+		tags_4: ['动漫','职场','机车','家装','文化'],
+		selectedTags: [],
+		max: 10,
 	  questionsWhatBoxes: [],
 	  answerWhatBoxes:[],
 	  questionsWhereBoxes: [],
@@ -89,21 +198,144 @@ export default {
 	  answerWhoBoxes:[],
 	  questionsHowBoxes: [],
 	  answerHowBoxes:[],
+	  checkboxValue: [] ,
     };
   },
   methods: {
     saveData() {
-     let data = {};
-         let inputs = document.querySelectorAll('input');
+		let data={};
+		
+		    // 获取What部分的非空输入框的内容
+		    if (this.$refs.qWhatInput && this.$refs.qWhatInput.value.trim() !== '') {
+		      data.qWhat = this.$refs.qWhatInput.value.trim();
+		    }
+		    if (this.$refs.aWhatInput && this.$refs.aWhatInput.value.trim() !== '') {
+		      data.aWhat = this.$refs.aWhatInput.value.trim();
+		    }
+		    for (let i = 0; i < this.questionsWhatBoxes.length; i++) {
+		      const qInput = this.$refs.qWhatInput[i];
+		      const aInput = this.$refs.aWhatInput[i];
+		      if (qInput && qInput.value.trim() !== '') {
+		        data[`qWhat${i}`] = qInput.value.trim();
+		      }
+		      if (aInput && aInput.value.trim() !== '') {
+		        data[`aWhat${i}`] = aInput.value.trim();
+		      }
+		    }
+			//获取Where部分的非空输入框的内容
+			    if (this.$refs.qWhereInput && this.$refs.qWhereInput.value.trim() !== '') {
+			      data.qWhere = this.$refs.qWhereInput.value.trim();
+			    }
+			    if (this.$refs.aWhereInput && this.$refs.aWhereInput.value.trim() !== '') {
+			      data.aWhere = this.$refs.aWhereInput.value.trim();
+			    }
+			    for (let i = 0; i < this.questionsWhereBoxes.length; i++) {
+			      const qInput = this.$refs.qWhereInput[i];
+			      const aInput = this.$refs.aWhereInput[i];
+			      if (qInput && qInput.value.trim() !== '') {
+			        data[`qWhere${i}`] = qInput.value.trim();
+			      }
+			      if (aInput && aInput.value.trim() !== '') {
+			        data[`aWhere${i}`] = aInput.value.trim();
+			      }
+			    }
+			
+			    //获取When部分的非空输入框的内容
+			    if (this.$refs.qWhenInput && this.$refs.qWhenInput.value.trim() !== '') {
+			      data.qWhen = this.$refs.qWhenInput.value.trim();
+			    }
+			    if (this.$refs.aWhenInput && this.$refs.aWhenInput.value.trim() !== '') {
+			      data.aWhen = this.$refs.aWhenInput.value.trim();
+			    }
+			    for (let i = 0; i < this.questionsWhenBoxes.length; i++) {
+			      const qInput = this.$refs.qWhenInput[i];
+			      const aInput = this.$refs.aWhenInput[i];
+			      if (qInput && qInput.value.trim() !== '') {
+			        data[`qWhen${i}`] = qInput.value.trim();
+			      }
+			      if (aInput && aInput.value.trim() !== '') {
+			        data[`aWhen${i}`] = aInput.value.trim();
+			      }
+			    }
+				
+				//获取Why部分的非空输入框的内容
+				    if (this.$refs.qWhyInput && this.$refs.qWhyInput.value.trim() !== '') {
+				      data.qWhy = this.$refs.qWhyInput.value.trim();
+				    }
+				    if (this.$refs.aWhyInput && this.$refs.aWhyInput.value.trim() !== '') {
+				      data.aWhy = this.$refs.aWhyInput.value.trim();
+				    }
+				    for (let i = 0; i < this.questionsWhyBoxes.length; i++) {
+				      const qInput = this.$refs.qWhyInput[i];
+				      const aInput = this.$refs.aWhyInput[i];
+				      if (qInput && qInput.value.trim() !== '') {
+				        data[`qWhy${i}`] = qInput.value.trim();
+				      }
+				      if (aInput && aInput.value.trim() !== '') {
+				        data[`aWhy${i}`] = aInput.value.trim();
+				      }
+				    }
+					
+					//获取Who部分的非空输入框的内容
+					    if (this.$refs.qWhoInput && this.$refs.qWhoInput.value.trim() !== '') {
+					      data.qWho = this.$refs.qWhoInput.value.trim();
+					    }
+					    if (this.$refs.aWhoInput && this.$refs.aWhoInput.value.trim() !== '') {
+					      data.aWho = this.$refs.aWhoInput.value.trim();
+					    }
+					    for (let i = 0; i < this.questionsWhoBoxes.length; i++) {
+					      const qInput = this.$refs.qWhoInput[i];
+					      const aInput = this.$refs.aWhoInput[i];
+					      if (qInput && qInput.value.trim() !== '') {
+					        data[`qWho${i}`] = qInput.value.trim();
+					      }
+					      if (aInput && aInput.value.trim() !== '') {
+					        data[`aWho${i}`] = aInput.value.trim();
+					      }
+					    }
+			//获取How部分的非空输入框的内容
+			    if (this.$refs.qHowInput && this.$refs.qHowInput.value.trim() !== '') {
+			      data.qHow = this.$refs.qHowInput.value.trim();
+			    }
+			    if (this.$refs.aHowInput && this.$refs.aHowInput.value.trim() !== '') {
+			      data.aHow = this.$refs.aHowInput.value.trim();
+			    }
+			    for (let i = 0; i < this.questionsHowBoxes.length; i++) {
+			      const qInput = this.$refs.qHowInput[i];
+			      const aInput = this.$refs.aHowInput[i];
+			      if (qInput && qInput.value.trim() !== '') {
+			        data[`qHow${i}`] = qInput.value.trim();
+			      }
+			      if (aInput && aInput.value.trim() !== '') {
+			        data[`aHow${i}`] = aInput.value.trim();
+			      }
+			    }
+
+         /* let inputs = document.querySelectorAll('input');
          inputs.forEach(input => {
            if (input.value) {
-             data[input.className] = input.value;
+             body[input.className] = input.value;
            }
-         });
+         });*/
+		 
+		 const openid = wx.getStorageSync('openid')
+		 var publicValue
+		 if (this.checkboxValue.includes("cb")) {
+		    publicValue=1
+		 } else {
+		 	publicValue=0
+		     }
+		 let noteData = {
+		   openid:this.openid,
+		   title: this.titleValue,
+		   selectedTags: this.selectedTags,
+		   data: this.data,
+		   publicValue:this.publicValue,
+		 }; 
          uni.request({
            url: '后端',
            method: 'POST',
-           data: data,
+           data: noteData,
            success: function (res) {
              console.log(res);
            }
@@ -127,12 +359,44 @@ export default {
 	QuestionsHow(){
 		this.questionsHowBoxes.push({});
 	},
+	toggleTagButton(index) {
+				 selectedTags: this.selectedTags;
+	     const filledCount = this.selectedTags.length;
+	     // Check if the clicked button is already selected
+	     const selectedIndex = this.selectedTags.indexOf(index);
+	     if (selectedIndex > -1) {
+	       // Button is already selected, remove it from the selected tags
+	       this.selectedTags.splice(selectedIndex, 1);
+	     } else {
+	       if (filledCount < this.max) {
+	         // Button is not selected and max limit is not reached, add it to the selected tags
+	         this.selectedTags.push(index);  
+	       }
+	     }
+	   },
+	   isTagFilled(index) {
+	     // Check if the button at the given index is selected
+	     return this.selectedTags.includes(index);
+	   },
+	   change(e) {
+	   				/* console.log('当前模式：' + e.type + ',状态：' + e.show); */
+	   			},
+	   toggle(type) {
+	   				this.type = type
+	   				// open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
+	   				this.$refs.popup.open(type)
+	   			},
   },
 };
 </script>
 
 <style>
-	.titleF{
+	.container{
+		color:#EBE645;
+		background-image: linear-gradient(to top, #49549a, #454b92, #414289, #3e3981, #3a3078, #362d73, #33296f, #2f266a, #2b2769, #262867, #222866, #1e2964);
+	}
+		
+		.titleF{
 		display: inline-block;
 		font-size: 35px;
 	}
@@ -140,51 +404,51 @@ export default {
 		font-size:30px;
 	}
 	.qWhat{
-		color: #c53d43;
+		color: #96BC00;
 		font-size: 25px;
 		}
 	.aWhat{
-		color: #1e50a2;
+		color: #F2FEDC;
 		font-size:25px;
 	}
 	.qWhere{
-			color: #c53d43;
+			color: #96BC00;
 			font-size: 25px;
 			}
 	.aWhere{
-			color: #1e50a2;
+			color: #F2FEDC;
 			font-size:25px;
 		}
 	.qWhen{
-			color: #c53d43;
+			color: #96BC00;
 			font-size: 25px;
 			}
 	.aWhen{
-			color: #1e50a2;
+			color: #F2FEDC;
 			font-size:25px;
 		}
 	.qWhy{
-			color: #c53d43;
+			color: #96BC00;
 			font-size: 25px;
 			}
 	.aWhy{
-			color: #1e50a2;
+			color: #F2FEDC;
 			font-size:25px;
 		}
 	.qWho{
-		color: #c53d43;
+		color:#96BC00;
 		font-size: 25px;
 		}
 	.aWho{
-		color: #1e50a2;
+		color: #F2FEDC;
 		font-size:25px;
 	}
 	.qHow{
-		color: #c53d43;
+		color: #96BC00;
 		font-size: 25px;
 		}
 	.aHow{
-		color: #1e50a2;
+		color: #F2FEDC;
 		font-size:25px;
 	}
 .questionIcon{
@@ -195,4 +459,54 @@ export default {
 	cursor: pointer;
 	font-size: 35px;
 }
+.noteTitle{
+		height:35px;
+		font-size: 25px;
+	}
+
+	.demo-uni-row {
+			margin-bottom: 0px;
+	
+		}
+		.demo-uni-col {
+				height: 36px;
+				border-radius: 0px;
+			}
+		
+			.dark_deep {
+				background-color: #99a9bf;
+			}
+		
+			.dark {
+				background-color: #d3dce6;
+			}
+		
+			.light {
+				background-color: #e5e9f2;
+			}
+		
+			.tagButton {
+				width: 100%;
+				height: 36px;
+				display: flex;
+				/* justify-content: center;
+				align-items: center; */
+				/* border: 2px solid #000; */
+				cursor: pointer;
+				font-weight: bold;
+				font-size: 14px;
+			  }
+			
+			.tagButton-filled {
+				background-color: #AE83CE;
+				/* background-color: #0000003a; */
+				color: #EBE645;
+			  }
+	.save-button{
+		height: auto;
+		 background-color: #E6AB17; /* 设置背景颜色为红色 */
+		    color:#FFF9EA; /* 设置字体颜色为白色 */
+			font-size: 25px;
+			font-weight: bold;
+	}
 </style>

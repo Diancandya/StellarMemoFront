@@ -143,12 +143,14 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var UniIcons = function UniIcons() {
   Promise.all(/*! require.ensure | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then((function () {
-    return resolve(__webpack_require__(/*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 141));
+    return resolve(__webpack_require__(/*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 135));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
   data: function data() {
     return {
+      showTags: false,
+      chosenTags: 0,
       keyword: '',
       activeTab: 'community',
       tabBarList: [],

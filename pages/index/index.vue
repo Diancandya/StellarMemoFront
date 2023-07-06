@@ -65,6 +65,8 @@ import UniIcons from '@/uni_modules/uni-icons/components/uni-icons/uni-icons.vue
 export default {
   data() {
     return {
+	  showTags: false,
+	  chosenTags: 0,
 	  keyword:'',
       activeTab: 'community',
       tabBarList: [],
