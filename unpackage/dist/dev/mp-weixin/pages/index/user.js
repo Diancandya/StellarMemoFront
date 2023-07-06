@@ -135,7 +135,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(wx, uni) {
+/* WEBPACK VAR INJECTION */(function(wx) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -143,7 +143,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var UniIcons = function UniIcons() {
   Promise.all(/*! require.ensure | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then((function () {
-    return resolve(__webpack_require__(/*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 143));
+    return resolve(__webpack_require__(/*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 135));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -152,12 +152,13 @@ var _default = {
       avatarUrl: '',
       nickName: '',
       /* keyword:'', */
-      activeTab: 'mine',
+      activeTab: 'community',
+      tabBarList: [],
       notes: [{
         title: '原神日记',
         tags: ['开放世界', '欧皇'],
         preview: '受不了了好想玩原神，感觉一天不玩原神浑身好像有蚂蚁在爬，玩不到原神的每一秒都想打爆这个世界。玩原神的第一百零八天，十连三金出了地',
-        image: 'https://picsum.photos/200/300',
+        image: '../../static/c1.png',
         starFilled: false,
         starColor: '' //处理star的点击
       }, {
@@ -207,34 +208,14 @@ var _default = {
     toggleStarFilled: function toggleStarFilled(index) {
       this.notes[index].starFilled = !this.notes[index].starFilled;
       this.notes[index].starColor = this.notes[index].starFilled ? '#F5DEB3' : '';
-    },
-    // 点击导航栏中的“社区”按钮
-    goToCommunity: function goToCommunity() {
-      uni.switchTab({
-        url: '/pages/index/index'
-      });
-    },
-    // 点击导航栏中的“我的”按钮
-    goToMine: function goToMine() {
-      uni.switchTab({
-        url: '/pages/index/user'
-      });
-    },
-    // 点击导航栏中的“新建笔记”按钮
-    goToAddNote: function goToAddNote() {
-      uni.navigateTo({
-        url: '../notes/selectCategory/selectCategory'
-      });
-      // 这里填写跳转到新建笔记页面的代码
     }
   },
-
   components: {
     UniIcons: UniIcons
   }
 };
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"]))
 
 /***/ }),
 

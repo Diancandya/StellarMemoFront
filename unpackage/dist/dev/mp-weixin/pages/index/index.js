@@ -143,7 +143,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var UniIcons = function UniIcons() {
   Promise.all(/*! require.ensure | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then((function () {
-    return resolve(__webpack_require__(/*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 143));
+    return resolve(__webpack_require__(/*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 135));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -154,17 +154,9 @@ var _default = {
       keyword: '',
       activeTab: 'community',
       tabBarList: [],
-      tags: [{
-        label: '原神',
-        value: '原神'
-      }, {
-        label: '崩坏：星穹铁道',
-        value: '崩坏：星穹铁道'
-      }, {
-        label: '米哈游',
-        value: '米哈游'
-      }],
       notes: [{
+        type: '公开',
+        state: '审核中',
         title: '原神日记',
         tags: ['开放世界', '欧皇'],
         preview: '受不了了好想玩原神，感觉一天不玩原神浑身好像有蚂蚁在爬，玩不到原神的每一秒都想打爆这个世界。玩原神的第一百零八天，十连三金出了地',
@@ -172,6 +164,8 @@ var _default = {
         starFilled: false,
         starColor: '' //处理star的点击
       }, {
+        type: '私有',
+        state: '',
         title: '笔记2',
         tags: ['标签3', '标签4'],
         preview: '这是笔记2的预览文字内容。',
@@ -220,60 +214,26 @@ var _default = {
         url: '/pages/index/search'
       });
     },
-    showDropdown: function showDropdown() {
-      if (this.chosenTags < 3) {
-        this.showTags = !this.showTags;
-        this.chosenTags++;
-      }
-    },
-    //展示标签栏
-    focus: function focus() {
-      this.showTags = true;
-    },
-    blur: function blur() {
-      var _this2 = this;
-      // 使用定时器延迟隐藏复选框，以防止点击复选框时无法选择选项
-      setTimeout(function () {
-        _this2.showTags = false; // 在失焦时隐藏复选框
-      }, 200);
-    },
-    cancel: function cancel() {},
-    clear: function clear() {
-      this.showTags = false;
-    },
-    //按下enter搜索
-    search: function search() {
-      //获取搜索栏输入值
-      var keyword = this.keyword;
-      console.log(keyword);
+    turnToNote: function turnToNote(note) {
+      uni.navigateTo({
+        url: '/pages/notes/browseNotes/browseNotes?note=' + encodeURIComponent(JSON.stringify(note))
+      });
+      // console.log("clicked");
+      //    const clickedNote = this.notes[index];
+
+      //    const router = useRouter();
+      // router.push({
+      //      path: '../notes/browseNotes/browseNotes',
+      //      query: {
+      //        note: JSON.stringify(clickedNote)
+      //      }
+      //    });
     },
     //点击star
     toggleStarFilled: function toggleStarFilled(index) {
       this.notes[index].starFilled = !this.notes[index].starFilled;
       this.notes[index].starColor = this.notes[index].starFilled ? '#F5DEB3' : '';
-    } //   // 点击导航栏中的“社区”按钮
-    //   goToCommunity() {
-    //     uni.redirectTo({
-    //       url: '/pages/index/index'
-    //     })
-    //   },
-    //   // 点击导航栏中的“我的”按钮
-    //   goToMine() {
-    //     uni.redirectTo({
-    //       url: '/pages/index/user'
-    //     })
-    //   },
-    //   // 点击导航栏中的“新建笔记”按钮
-    //   goToAddNote() {
-    // uni.navigateTo({
-    //   url: '../notes/selectCategory/selectCategory'
-    // });
-    //     // 这里填写跳转到新建笔记页面的代码
-    //   },
-    // handleTabClick(index) {
-    //       // 处理点击事件
-    //       console.log('Tab clicked', index);
-    // }
+    }
   },
   components: {
     UniIcons: UniIcons

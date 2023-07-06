@@ -5,6 +5,10 @@
 		<!-- <div class="search-bar">
 		  <input type="text" v-model="keyword" placeholder="搜索笔记">
 		  <button class="search-button" @click="searchNotes">查询</button>
+
+
+
+
 		</div> -->
 		<!-- 用户信息部分 -->
 		<view class="content">
@@ -50,26 +54,7 @@
 		</div>
 		
 		<!-- 底部导航栏 -->
-		<!-- <div class="navbar">
-		  <div class="nav-item" 
-		  :class="{ active: activeTab === 'community' }"
-		  @click="goToCommunity">
-		    <i class="iconfont icon-shequ"></i>
-		    <span>社区</span>
-		  </div>
-		  <div class="creat-item" @click="goToAddNote">
-		    <i class="iconfont icon-add"></i>
-		    <span>＋</span>
-		  </div>
-		  <div class="nav-item" 
-		  :class="{ active: activeTab === 'mine' }"
-		  @click="goToMine">
-		    <i class="iconfont icon-wode"></i>
-		    <span>我的</span>
-		  </div>
-		</div> -->
-		
-		
+		<uni-tab-bar :list="tabBarList" @click="handleTabClick"></uni-tab-bar>
 	</view>
   </div>
 </template>
@@ -83,18 +68,19 @@ export default {
 		nickName:'',
 		
 	 /* keyword:'', */
-      activeTab: 'mine',
+      activeTab: 'community',
+      tabBarList: [],
 	  notes: [
 	    { 
-	      title: '原神日记', 
+		  title: '原神日记', 
 	      tags: ['开放世界', '欧皇'], 
 	      preview: '受不了了好想玩原神，感觉一天不玩原神浑身好像有蚂蚁在爬，玩不到原神的每一秒都想打爆这个世界。玩原神的第一百零八天，十连三金出了地', 
-	      image: 'https://picsum.photos/200/300',
+	      image: '../../static/c1.png',
 	      starFilled: false,
 	      starColor:'',//处理star的点击
 	    },  
 	    { 
-	      title: '笔记2', 
+		  title: '笔记2', 
 	      tags: ['标签3', '标签4'], 
 	      preview: '这是笔记2的预览文字内容。', 
 	      image: 'https://picsum.photos/200/300',
@@ -133,6 +119,12 @@ export default {
 		  this.avatarUrl = userInfo.avatarUrl;
 		  this.nickName = userInfo.nickName;
   },
+
+
+
+
+
+
   methods: {
 	//按下enter搜索
 	/* searchNotes() {
@@ -144,32 +136,11 @@ export default {
 	toggleStarFilled(index) {
 	    this.notes[index].starFilled = !this.notes[index].starFilled;
 		this.notes[index].starColor = this.notes[index].starFilled ? '#F5DEB3' : '';
-	},
-    // 点击导航栏中的“社区”按钮
-    goToCommunity() {
-      uni.switchTab({
-        url: '/pages/index/index'
-      })
-    },
-    
-    // 点击导航栏中的“我的”按钮
-    goToMine() {
-      uni.switchTab({
-        url: '/pages/index/user'
-      })
-    },
-    
-    // 点击导航栏中的“新建笔记”按钮
-    goToAddNote() {
-		uni.navigateTo({
-		  url: '../notes/selectCategory/selectCategory'
-		});
-      // 这里填写跳转到新建笔记页面的代码
-    }
+	}
   },
   components: {
 	  UniIcons
-  }
+  },
 }
 </script>
 
@@ -244,8 +215,7 @@ export default {
       border-bottom: 3px solid #ddd;
 	  z-index: 100;
     }
-  
-    .note-title {
+	.note-title {
 	  color: #ddd;
       font-size: 16px;
       font-weight: bold;
@@ -297,100 +267,5 @@ export default {
 	  bottom: 0;
 	  right: 0;
 	}
-	
-  .navbar {
-	background-color: #8C7DEE;
-	position: fixed;
-	bottom: 0;
-	width: 330px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-	border: thin solid;
-	z-index: 100;
-    
-    .nav-item {
-	  width: 170px;
-	  height: 50px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-	  border: thin solid;
-      border-radius: 10%;
-	  background-color: #483D8B;
-	  // #4169E1
-      i {
-        font-size: 30px;
-        margin-bottom: 5px;
-      }
-      
-      span {
-	    display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 12px;
-      }
-    }
-	
-	.nav-item.active {
-		background-color: #535391;
-	}
-	// #6495ED
-	.nav-item i {
-	  font-size: 20px;
-	}
-	
-	.nav-item span {
-	  display: flex;
-      justify-content: center;
-      align-items: center;
-	  font-size: 25px;
-	  color: #F7F7FF;
-	}
-	// #f5f5f5
-	.nav-item.active span {
-	  display: flex;
-	  justify-content: center;
-	  align-items: center;
-	  font-size: 25px;
-	  color: #C0C0C0;
-	}
-	// #778899
-	.creat-item {
-	  background-color: #9370DB;
-	  width: 90px;
-	  height: 50px;
-	  display: flex;
-	  flex-direction: column;
-	  align-items: center;
-	  border: thin solid;
-	  border-radius: 50%;
-	  // #7B68EE
-	  i {
-	    font-size: 30px;
-	    margin-bottom: 5px;
-	  }
-	  
-	  span {
-	    color: #f5f5f5;
-	    display: flex;
-        justify-content: center;
-        align-items: center;
-	    font-size: 12px;
-	  }
-	}
-	
-	.creat-item i {
-	  font-size: 20px;
-	}
-	
-	.creat-item span {
-	  display: flex;
-	  justify-content: center;
-	  align-items: center;
-	  font-size: 25px;
-	}
-  }
 }
 </style>

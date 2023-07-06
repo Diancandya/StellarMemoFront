@@ -143,7 +143,7 @@ module.exports = _toPrimitive, module.exports.__esModule = true, module.exports[
 
 /***/ }),
 
-/***/ 148:
+/***/ 140:
 /*!**************************************************************************************!*\
   !*** D:/HbuiderProjects/newmemo/uni_modules/uni-icons/components/uni-icons/icons.js ***!
   \**************************************************************************************/
