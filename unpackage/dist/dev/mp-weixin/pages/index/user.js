@@ -135,7 +135,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
+/* WEBPACK VAR INJECTION */(function(wx, uni) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -149,7 +149,9 @@ var UniIcons = function UniIcons() {
 var _default = {
   data: function data() {
     return {
-      keyword: '',
+      avatarUrl: '',
+      nickName: '',
+      /* keyword:'', */
       activeTab: 'mine',
       notes: [{
         title: '原神日记',
@@ -189,14 +191,18 @@ var _default = {
       }]
     };
   },
-
+  onLoad: function onLoad() {
+    var userInfo = wx.getStorageSync('userInfo');
+    this.avatarUrl = userInfo.avatarUrl;
+    this.nickName = userInfo.nickName;
+  },
   methods: {
     //按下enter搜索
-    searchNotes: function searchNotes() {
-      //获取搜索栏输入值
-      var keyword = this.keyword;
-      console.log(keyword);
-    },
+    /* searchNotes() {
+    	//获取搜索栏输入值
+    	const keyword = this.keyword;
+    	console.log(keyword);
+    }, */
     //点击star
     toggleStarFilled: function toggleStarFilled(index) {
       this.notes[index].starFilled = !this.notes[index].starFilled;
@@ -228,7 +234,7 @@ var _default = {
   }
 };
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 

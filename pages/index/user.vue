@@ -2,10 +2,17 @@
   <div class="community">
     <view class="background">
 		<!-- 顶部搜索栏 -->
-		<div class="search-bar">
+		<!-- <div class="search-bar">
 		  <input type="text" v-model="keyword" placeholder="搜索笔记">
 		  <button class="search-button" @click="searchNotes">查询</button>
-		</div>
+		</div> -->
+		<!-- 用户信息部分 -->
+		<view class="content">
+			<image class="avatar" :src="avatarUrl"></image>
+					
+				<text class="nickName">{{nickName}}</text>
+
+		</view>
 		
 		<!-- 主体部分，可滑动查看他人笔记 -->
 		<div class="note-list-container">
@@ -72,7 +79,10 @@ import UniIcons from '@/uni_modules/uni-icons/components/uni-icons/uni-icons.vue
 export default {
   data() {
     return {
-	  keyword:'',
+		avatarUrl:'',
+		nickName:'',
+		
+	 /* keyword:'', */
       activeTab: 'mine',
 	  notes: [
 	    { 
@@ -82,7 +92,7 @@ export default {
 	      image: 'https://picsum.photos/200/300',
 	      starFilled: false,
 	      starColor:'',//处理star的点击
-	    },
+	    },  
 	    { 
 	      title: '笔记2', 
 	      tags: ['标签3', '标签4'], 
@@ -118,13 +128,18 @@ export default {
 	  ]
     }
   },
+  onLoad(){
+	  const userInfo=wx.getStorageSync('userInfo');
+		  this.avatarUrl = userInfo.avatarUrl;
+		  this.nickName = userInfo.nickName;
+  },
   methods: {
 	//按下enter搜索
-	searchNotes() {
+	/* searchNotes() {
 		//获取搜索栏输入值
 		const keyword = this.keyword;
 		console.log(keyword);
-	},
+	}, */
 	//点击star
 	toggleStarFilled(index) {
 	    this.notes[index].starFilled = !this.notes[index].starFilled;
@@ -169,14 +184,14 @@ export default {
   }
   
   
-  .search-bar {
+  /* .search-bar {
     height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-	z-index: 100;
+	z-index: 100; */
     
-    input {
+    /* .input {
       width: 80%;
       height: 30px;
       background-color: #f5f5f5;
@@ -185,24 +200,24 @@ export default {
       box-sizing: border-box;
       border: thin solid;
       outline: none;
-    }
+    } */
 	
-	.search-button{
-	  width: 20%; /* 调整宽度以给按钮留出空间 */
+	/* .search-button{
+	  width: 20%; /、 调整宽度以给按钮留出空间 
 	  font-size: 100%;
 	  height: 30px;
-	  margin-left: 5px; /* 添加边距以在输入框和按钮之间创建间隔 */
+	  margin-left: 5px; // 添加边距以在输入框和按钮之间创建间隔 
       background-color: #8C7DEE;
       color: #fff;
       border: none;
       border-radius: 15px;
       cursor: pointer;
       outline: none;
-      display: flex; /* 使用弹性盒子布局 */
-      justify-content: center; /* 水平居中 */
-      align-items: center; /* 垂直居中 */
-	}
-  }
+      display: flex; // 使用弹性盒子布局 
+      justify-content: center; // 水平居中 
+      align-items: center; // 垂直居中 
+	} 
+  }*/
   
   .note-list-container {
 	  max-width: 100%;
