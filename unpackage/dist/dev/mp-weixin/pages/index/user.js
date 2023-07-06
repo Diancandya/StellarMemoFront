@@ -198,12 +198,6 @@ var _default = {
     this.nickName = userInfo.nickName;
   },
   methods: {
-    //按下enter搜索
-    /* searchNotes() {
-    	//获取搜索栏输入值
-    	const keyword = this.keyword;
-    	console.log(keyword);
-    }, */
     //点击star
     toggleStarFilled: function toggleStarFilled(index) {
       this.notes[index].starFilled = !this.notes[index].starFilled;

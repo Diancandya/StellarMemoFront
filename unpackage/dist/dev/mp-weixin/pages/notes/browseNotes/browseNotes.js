@@ -171,20 +171,35 @@ var _uniIcons = _interopRequireDefault(__webpack_require__(/*! @/uni_modules/uni
 var _default = {
   data: function data() {
     return {
-      note: {} // 接收笔记信息
+      note: {
+        title: '',
+        tags: [],
+        preview: '',
+        image: ''
+      } // 接收笔记信息
     };
   },
-  //  methods() {
+  onLoad: function onLoad(options) {
+    var title = options.title,
+      tags = options.tags,
+      preview = options.preview;
+    console.log(title + tags + preview);
+    this.note.title = title;
+    this.note.tags = tags;
+    this.note.preview = preview;
+    // this.note.image = image;
+  } //  methods() {
   // //点击star
   // toggleStarFilled(index) {
   //     this.note.starFilled = !this.note.starFilled;
   //   	this.note.starColor = this.note.starFilled ? '#F5DEB3' : '';
   // }
   //  },
-  mounted: function mounted() {
-    var noteString = decodeURIComponent(this.$route.query.note);
-    this.note = JSON.parse(noteString);
-  } // created() {
+  // mounted() {
+  //  const noteString = decodeURIComponent(this.$route.query.note);
+  //  this.note = JSON.parse(noteString);
+  // }
+  // created() {
   //   const noteString = this.$route.query.note;
   //   this.note = JSON.parse(noteString);
   // },

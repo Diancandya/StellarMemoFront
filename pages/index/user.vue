@@ -1,23 +1,11 @@
 <template>
   <div class="community">
     <view class="background">
-		<!-- 顶部搜索栏 -->
-		<!-- <div class="search-bar">
-		  <input type="text" v-model="keyword" placeholder="搜索笔记">
-		  <button class="search-button" @click="searchNotes">查询</button>
-
-
-
-
-		</div> -->
-		<!-- 用户信息部分 -->
-		<view class="content">
-			<image class="avatar" :src="avatarUrl"></image>
-					
-				<text class="nickName">{{nickName}}</text>
-
+		<!-- 用户部分 -->
+		<view class="user">
+		<image class="avatar" :src="avatarUrl"></image>
+			<text class="nickName">{{nickName}}</text>
 		</view>
-		
 		<!-- 主体部分，可滑动查看他人笔记 -->
 		<div class="note-list-container">
 		  <div class="note-list">
@@ -126,12 +114,6 @@ export default {
 
 
   methods: {
-	//按下enter搜索
-	/* searchNotes() {
-		//获取搜索栏输入值
-		const keyword = this.keyword;
-		console.log(keyword);
-	}, */
 	//点击star
 	toggleStarFilled(index) {
 	    this.notes[index].starFilled = !this.notes[index].starFilled;
@@ -145,6 +127,10 @@ export default {
 </script>
 
 <style lang="scss">
+	.user{ display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;}
 	.avatar {
 		width: 200rpx;
 		height: 200rpx;
@@ -170,42 +156,6 @@ export default {
     background: linear-gradient(to bottom, #3D3170, #7B68EE);
   }
   
-  
-  /* .search-bar {
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-	z-index: 100; */
-    
-    /* .input {
-      width: 80%;
-      height: 30px;
-      background-color: #f5f5f5;
-      border-radius: 15px;
-      padding: 0 10px;
-      box-sizing: border-box;
-      border: thin solid;
-      outline: none;
-    } */
-	
-	/* .search-button{
-	  width: 20%; /、 调整宽度以给按钮留出空间 
-	  font-size: 100%;
-	  height: 30px;
-	  margin-left: 5px; // 添加边距以在输入框和按钮之间创建间隔 
-      background-color: #8C7DEE;
-      color: #fff;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-      outline: none;
-      display: flex; // 使用弹性盒子布局 
-      justify-content: center; // 水平居中 
-      align-items: center; // 垂直居中 
-	} 
-  }*/
-  
   .note-list-container {
 	  max-width: 100%;
       height: 500px; 
@@ -215,7 +165,7 @@ export default {
   
   .note-list {
 	max-width: 100%;
-    height: calc(100vh - 30px);
+    height: calc(100vh);
     overflow-y: auto;
 	overflow-x: hidden;
 	  
