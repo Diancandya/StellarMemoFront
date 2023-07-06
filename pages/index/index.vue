@@ -1,10 +1,14 @@
 <template>
   <div class="community">
     <view class="background">
-		<!-- 顶部搜索栏 -->
-		<div class="search-bar">
-		  <input type="text" v-model="keyword" placeholder="搜索笔记">
-		  <button class="search-button" @click="searchNotes">查询</button>
+		<div>
+			<div class="search-container" >
+				<!-- 搜索页面跳转按钮 -->
+				<button class="search-button" @click="redirectToSearch">
+					<UniIcons type="search"></UniIcons>
+					查找
+				</button>
+			</div>
 		</div>
 		
 		<!-- 主体部分，可滑动查看他人笔记 -->
@@ -12,55 +16,46 @@
 		  <div class="note-list">
 		    <!-- 这里填充要展示的笔记内容 -->
 			<ul>
-			    <li v-for="(note, index) in notes" :key="index">
-			      <div class="note-item">
-			        <h3 class="note-title">{{ note.title }}</h3>
-			        <div class="note-tags">
-			          <span v-for="(tag, tagIndex) in note.tags" :key="tagIndex" class="tag">{{ tag }}</span>
-			        </div>
-					<p class="note-preview">{{ note.preview }}</p>
-			        <div class="note-content">
-			          <div class="note-image">
-			            <img :src="note.image" alt="" mode="aspectFit" style="float: left;">
-			          </div>
-					  <div>\n</div>
-			        </div>
-					<div class="note-icons">
-						<br>
-						<br>
-					    <UniIcons 
-						  :type="notes[index].starFilled ? 'star-filled' : 'star'"
-						  size="25" 
-                          @click="toggleStarFilled(index)"
-						  :color="notes[index].starColor"
-						  ></UniIcons>
-					</div>
-			      </div>
-			    </li>
-			  </ul>
+				<div v-for="(note, index) in notes" :key="index" @click="turnToNote(note)">
+					<li>
+					  <div class="note-item">
+						<div class="title-info-container">
+							<h3 class="note-title">{{ note.title }}</h3>
+							<p class="type"><span>*{{ note.type }}*</span></p>
+						</div>
+						<div class="tags-state-container">
+							<div class="note-tags">
+							  <span v-for="(tag, tagIndex) in note.tags" :key="tagIndex" class="tag">{{ tag }}</span>
+							</div>
+							<p class="state"><span>{{ note.state }}</span></p>
+						</div>
+						<p class="note-preview">{{ note.preview }}</p>
+						<div class="note-content">
+						  <div class="note-image">
+							<img :src="note.image" alt="" mode="aspectFit" style="float: left;">
+						  </div>
+						  <div>\n</div>
+						</div>
+						<!-- <div class="note-icons">
+							<br>
+							<br>
+							<UniIcons 
+							  :type="notes[index].starFilled ? 'star-filled' : 'star'"
+							  size="25" 
+							  @click="toggleStarFilled(index)"
+							  :color="notes[index].starColor"
+							  ></UniIcons>
+						</div> -->
+					  </div>
+					</li>
+				</div>
+			</ul>
 			
 		  </div>
 		</div>
 		
 		<!-- 底部导航栏 -->
-		<div class="navbar">
-		  <div class="nav-item" 
-		  :class="{ active: activeTab === 'community' }"
-		  @click="goToCommunity">
-		    <i class="iconfont icon-shequ"></i>
-		    <span>社区</span>
-		  </div>
-		  <div class="creat-item" @click="goToAddNote">
-		    <i class="iconfont icon-add"></i>
-		    <span>＋</span>
-		  </div>
-		  <div class="nav-item" 
-		  :class="{ active: activeTab === 'mine' }"
-		  @click="goToMine">
-		    <i class="iconfont icon-wode"></i>
-		    <span>我的</span>
-		  </div>
-		</div>
+		<uni-tab-bar :list="tabBarList" @click="handleTabClick"></uni-tab-bar>
 	</view>
   </div>
 </template>
@@ -72,9 +67,12 @@ export default {
     return {
 	  keyword:'',
       activeTab: 'community',
+      tabBarList: [],
 	  notes: [
 	    { 
-	      title: '原神日记', 
+	      type: '公开',
+		  state: '审核中',
+		  title: '原神日记', 
 	      tags: ['开放世界', '欧皇'], 
 	      preview: '受不了了好想玩原神，感觉一天不玩原神浑身好像有蚂蚁在爬，玩不到原神的每一秒都想打爆这个世界。玩原神的第一百零八天，十连三金出了地', 
 	      image: 'https://picsum.photos/200/300',
@@ -82,6 +80,8 @@ export default {
 	      starColor:'',//处理star的点击
 	    },
 	    { 
+	      type: '私有',
+		  state: '',
 	      title: '笔记2', 
 	      tags: ['标签3', '标签4'], 
 	      preview: '这是笔记2的预览文字内容。', 
@@ -116,43 +116,47 @@ export default {
 	  ]
     }
   },
+  mounted() {
+      // 异步加载 pages.json 文件
+      uni.request({
+        url: '/pages.json',
+        success: (res) => {
+          if (res.data && res.data.pages) {
+            this.tabBarList = res.data.pages;
+          }
+        },
+      });
+  },
   methods: {
-	//按下enter搜索
-	searchNotes() {
-		//获取搜索栏输入值
-		const keyword = this.keyword;
-		console.log(keyword);
+	redirectToSearch() {
+	  uni.redirectTo({
+	  url: '/pages/index/search'
+	  });  
 	},
+	turnToNote(note) {
+		uni.navigateTo({
+			url: '/pages/notes/browseNotes/browseNotes?note=' + encodeURIComponent(JSON.stringify(note)),
+		});
+	  // console.log("clicked");
+   //    const clickedNote = this.notes[index];
+
+   //    const router = useRouter();
+	  // router.push({
+   //      path: '../notes/browseNotes/browseNotes',
+   //      query: {
+   //        note: JSON.stringify(clickedNote)
+   //      }
+   //    });
+    },
 	//点击star
 	toggleStarFilled(index) {
 	    this.notes[index].starFilled = !this.notes[index].starFilled;
 		this.notes[index].starColor = this.notes[index].starFilled ? '#F5DEB3' : '';
-	},
-    // 点击导航栏中的“社区”按钮
-    goToCommunity() {
-      uni.redirectTo({
-        url: '/pages/index/index'
-      })
-    },
-    
-    // 点击导航栏中的“我的”按钮
-    goToMine() {
-      uni.redirectTo({
-        url: '/pages/index/user'
-      })
-    },
-    
-    // 点击导航栏中的“新建笔记”按钮
-    goToAddNote() {
-		uni.navigateTo({
-		  url: '../notes/selectCategory/selectCategory'
-		});
-      // 这里填写跳转到新建笔记页面的代码
-    }
+	}
   },
   components: {
 	  UniIcons
-  }
+  },
 }
 </script>
 
@@ -166,52 +170,24 @@ export default {
     background: linear-gradient(to bottom, #3D3170, #7B68EE);
   }
   
-  
-  .search-bar {
+  .search-button {
+	width: 80%;
     height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-	z-index: 100;
-    
-    input {
-      width: 80%;
-      height: 30px;
-      background-color: #f5f5f5;
-      border-radius: 15px;
-      padding: 0 10px;
-      box-sizing: border-box;
-      border: thin solid;
-      outline: none;
-    }
-	
-	.search-button{
-	  width: 20%; /* 调整宽度以给按钮留出空间 */
-	  font-size: 100%;
-	  height: 30px;
-	  margin-left: 5px; /* 添加边距以在输入框和按钮之间创建间隔 */
-      background-color: #8C7DEE;
-      color: #fff;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-      outline: none;
-      display: flex; /* 使用弹性盒子布局 */
-      justify-content: center; /* 水平居中 */
-      align-items: center; /* 垂直居中 */
-	}
   }
   
   .note-list-container {
 	  max-width: 100%;
-      height: 400px; 
+      height: 500px; 
       overflow-y: scroll; /* 允许垂直滚动 */
 	  overflow-x: hidden;
     }
   
   .note-list {
 	max-width: 100%;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 30px);
     overflow-y: auto;
 	overflow-x: hidden;
 	  
@@ -227,7 +203,28 @@ export default {
       border-bottom: 3px solid #ddd;
 	  z-index: 100;
     }
-  
+	
+	.inline p {
+	  margin-right: 10px;
+	}
+	
+	.title-type-container {
+	  display: flex;
+	  align-items: center;
+	  justify-content: space-between;
+	}
+	
+	.type {
+		font-size: 12px;
+		color: yellow;
+	}
+    
+    .tags-state-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+	
     .note-title {
 	  color: #ddd;
       font-size: 16px;
@@ -280,100 +277,5 @@ export default {
 	  bottom: 0;
 	  right: 0;
 	}
-	
-  .navbar {
-	background-color: #8C7DEE;
-	position: fixed;
-	bottom: 0;
-	width: 330px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-	border: thin solid;
-	z-index: 100;
-    
-    .nav-item {
-	  width: 170px;
-	  height: 50px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-	  border: thin solid;
-      border-radius: 10%;
-	  background-color: #483D8B;
-	  // #4169E1
-      i {
-        font-size: 30px;
-        margin-bottom: 5px;
-      }
-      
-      span {
-	    display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 12px;
-      }
-    }
-	
-	.nav-item.active {
-		background-color: #535391;
-	}
-	// #6495ED
-	.nav-item i {
-	  font-size: 20px;
-	}
-	
-	.nav-item span {
-	  display: flex;
-      justify-content: center;
-      align-items: center;
-	  font-size: 25px;
-	  color: #F7F7FF;
-	}
-	// #f5f5f5
-	.nav-item.active span {
-	  display: flex;
-	  justify-content: center;
-	  align-items: center;
-	  font-size: 25px;
-	  color: #C0C0C0;
-	}
-	// #778899
-	.creat-item {
-	  background-color: #9370DB;
-	  width: 90px;
-	  height: 50px;
-	  display: flex;
-	  flex-direction: column;
-	  align-items: center;
-	  border: thin solid;
-	  border-radius: 50%;
-	  // #7B68EE
-	  i {
-	    font-size: 30px;
-	    margin-bottom: 5px;
-	  }
-	  
-	  span {
-	    color: #f5f5f5;
-	    display: flex;
-        justify-content: center;
-        align-items: center;
-	    font-size: 12px;
-	  }
-	}
-	
-	.creat-item i {
-	  font-size: 20px;
-	}
-	
-	.creat-item span {
-	  display: flex;
-	  justify-content: center;
-	  align-items: center;
-	  font-size: 25px;
-	}
-  }
 }
 </style>

@@ -1,9 +1,9 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["pages/index/user"],{
 
 /***/ 47:
-/*!**********************************************************************************************!*\
-  !*** C:/Users/17279/Documents/HBuilderProjects/memo/main.js?{"page":"pages%2Findex%2Fuser"} ***!
-  \**********************************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** C:/Users/17279/Documents/HBuilderProjects/newmemo/main.js?{"page":"pages%2Findex%2Fuser"} ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22,9 +22,9 @@ createPage(_user.default);
 /***/ }),
 
 /***/ 48:
-/*!***************************************************************************!*\
-  !*** C:/Users/17279/Documents/HBuilderProjects/memo/pages/index/user.vue ***!
-  \***************************************************************************/
+/*!******************************************************************************!*\
+  !*** C:/Users/17279/Documents/HBuilderProjects/newmemo/pages/index/user.vue ***!
+  \******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -63,9 +63,9 @@ component.options.__file = "pages/index/user.vue"
 /***/ }),
 
 /***/ 49:
-/*!**********************************************************************************************************!*\
-  !*** C:/Users/17279/Documents/HBuilderProjects/memo/pages/index/user.vue?vue&type=template&id=21bf4c21& ***!
-  \**********************************************************************************************************/
+/*!*************************************************************************************************************!*\
+  !*** C:/Users/17279/Documents/HBuilderProjects/newmemo/pages/index/user.vue?vue&type=template&id=21bf4c21& ***!
+  \*************************************************************************************************************/
 /*! exports provided: render, staticRenderFns, recyclableRender, components */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -85,9 +85,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 50:
-/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!C:/Users/17279/Documents/HBuilderProjects/memo/pages/index/user.vue?vue&type=template&id=21bf4c21& ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!C:/Users/17279/Documents/HBuilderProjects/newmemo/pages/index/user.vue?vue&type=template&id=21bf4c21& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns, recyclableRender, components */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -112,9 +112,9 @@ render._withStripped = true
 /***/ }),
 
 /***/ 51:
-/*!****************************************************************************************************!*\
-  !*** C:/Users/17279/Documents/HBuilderProjects/memo/pages/index/user.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************/
+/*!*******************************************************************************************************!*\
+  !*** C:/Users/17279/Documents/HBuilderProjects/newmemo/pages/index/user.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -128,9 +128,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 52:
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--13-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!C:/Users/17279/Documents/HBuilderProjects/memo/pages/index/user.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--13-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!C:/Users/17279/Documents/HBuilderProjects/newmemo/pages/index/user.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -143,19 +143,20 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var UniIcons = function UniIcons() {
   Promise.all(/*! require.ensure | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then((function () {
-    return resolve(__webpack_require__(/*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 133));
+    return resolve(__webpack_require__(/*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 141));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
   data: function data() {
     return {
       keyword: '',
-      activeTab: 'mine',
+      activeTab: 'community',
+      tabBarList: [],
       notes: [{
         title: '原神日记',
         tags: ['开放世界', '欧皇'],
         preview: '受不了了好想玩原神，感觉一天不玩原神浑身好像有蚂蚁在爬，玩不到原神的每一秒都想打爆这个世界。玩原神的第一百零八天，十连三金出了地',
-        image: 'https://picsum.photos/200/300',
+        image: '../../static/c1.png',
         starFilled: false,
         starColor: '' //处理star的点击
       }, {
@@ -189,40 +190,30 @@ var _default = {
       }]
     };
   },
-
+  mounted: function mounted() {
+    var _this = this;
+    // 异步加载 pages.json 文件
+    uni.request({
+      url: '/pages.json',
+      success: function success(res) {
+        if (res.data && res.data.pages) {
+          _this.tabBarList = res.data.pages;
+        }
+      }
+    });
+  },
   methods: {
-    //按下enter搜索
-    searchNotes: function searchNotes() {
-      //获取搜索栏输入值
-      var keyword = this.keyword;
-      console.log(keyword);
+    redirectToSearch: function redirectToSearch() {
+      uni.redirectTo({
+        url: '/pages/index/search'
+      });
     },
     //点击star
     toggleStarFilled: function toggleStarFilled(index) {
       this.notes[index].starFilled = !this.notes[index].starFilled;
       this.notes[index].starColor = this.notes[index].starFilled ? '#F5DEB3' : '';
-    },
-    // 点击导航栏中的“社区”按钮
-    goToCommunity: function goToCommunity() {
-      uni.switchTab({
-        url: '/pages/index/index'
-      });
-    },
-    // 点击导航栏中的“我的”按钮
-    goToMine: function goToMine() {
-      uni.switchTab({
-        url: '/pages/index/user'
-      });
-    },
-    // 点击导航栏中的“新建笔记”按钮
-    goToAddNote: function goToAddNote() {
-      uni.navigateTo({
-        url: '../notes/selectCategory/selectCategory'
-      });
-      // 这里填写跳转到新建笔记页面的代码
     }
   },
-
   components: {
     UniIcons: UniIcons
   }
@@ -233,9 +224,9 @@ exports.default = _default;
 /***/ }),
 
 /***/ 53:
-/*!*************************************************************************************************************!*\
-  !*** C:/Users/17279/Documents/HBuilderProjects/memo/pages/index/user.vue?vue&type=style&index=0&lang=scss& ***!
-  \*************************************************************************************************************/
+/*!****************************************************************************************************************!*\
+  !*** C:/Users/17279/Documents/HBuilderProjects/newmemo/pages/index/user.vue?vue&type=style&index=0&lang=scss& ***!
+  \****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -249,9 +240,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 54:
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--8-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--8-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-2!./node_modules/postcss-loader/src??ref--8-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/sass-loader/dist/cjs.js??ref--8-oneOf-1-4!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-5!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!C:/Users/17279/Documents/HBuilderProjects/memo/pages/index/user.vue?vue&type=style&index=0&lang=scss& ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--8-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--8-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-2!./node_modules/postcss-loader/src??ref--8-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/sass-loader/dist/cjs.js??ref--8-oneOf-1-4!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-5!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!C:/Users/17279/Documents/HBuilderProjects/newmemo/pages/index/user.vue?vue&type=style&index=0&lang=scss& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

@@ -1,0 +1,11 @@
+
+.tag-view {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 10px; /* 添加标签之间的间距，可以根据需要进行调整 */
+}
+.uni-tag {
+  margin-bottom: 10px; /* 添加标签下方的间距，可以根据需要进行调整 */
+}
+
