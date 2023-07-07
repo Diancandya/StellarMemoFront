@@ -219,7 +219,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
+/* WEBPACK VAR INJECTION */(function(wx, uni) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -429,42 +429,84 @@ var _default = {
   methods: {
     handleSubmit: function handleSubmit(event) {
       console.log("?");
-      event.preventDefault();
+      var questionsAndAnswers = '';
 
-      // Get all the question and answer inputs
-      var questionInputs = Array.from(document.querySelectorAll('.qWhat, .qWhere, .qWhen, .qWhy, .qWho, .qHow'));
-      var answerInputs = Array.from(document.querySelectorAll('.aWhat, .aWhere, .aWhen, .aWhy, .aWho, .aHow'));
+      // 处理 What 相关字段
+      questionsAndAnswers += "Question: ".concat(this.qWhatInput, ", Answer: ").concat(this.aWhatInput, "\n");
+      for (var i = 0; i < this.questionsWhatBoxes.length; i++) {
+        var qWhatInput = this.questionsWhatBoxes[i].qWhatInput;
+        var aWhatInput = this.questionsWhatBoxes[i].aWhatInput;
+        questionsAndAnswers += "Question: ".concat(qWhatInput, ", Answer: ").concat(aWhatInput, "\n");
+      }
 
-      // Extract the values from the inputs and concatenate them
-      var questions = questionInputs.map(function (input) {
-        return input.value;
+      // 处理 Where 相关字段
+      questionsAndAnswers += "Question: ".concat(this.qWhereInput, ", Answer: ").concat(this.aWhereInput, "\n");
+      for (var _i = 0; _i < this.questionsWhereBoxes.length; _i++) {
+        var qWhereInput = this.questionsWhereBoxes[_i].qWhereInput;
+        var aWhereInput = this.questionsWhereBoxes[_i].aWhereInput;
+        questionsAndAnswers += "Question: ".concat(qWhereInput, ", Answer: ").concat(aWhereInput, "\n");
+      }
+
+      // 处理 When 相关字段
+      questionsAndAnswers += "Question: ".concat(this.qWhenInput, ", Answer: ").concat(this.aWhenInput, "\n");
+      for (var _i2 = 0; _i2 < this.questionsWhenBoxes.length; _i2++) {
+        var qWhenInput = this.questionsWhenBoxes[_i2].qWhenInput;
+        var aWhenInput = this.questionsWhenBoxes[_i2].aWhenInput;
+        questionsAndAnswers += "Question: ".concat(qWhenInput, ", Answer: ").concat(aWhenInput, "\n");
+      }
+
+      // 处理 Why 相关字段
+      questionsAndAnswers += "Question: ".concat(this.qWhyInput, ", Answer: ").concat(this.aWhyInput, "\n");
+      for (var _i3 = 0; _i3 < this.questionsWhyBoxes.length; _i3++) {
+        var qWhyInput = this.questionsWhyBoxes[_i3].qWhyInput;
+        var aWhyInput = this.questionsWhyBoxes[_i3].aWhyInput;
+        questionsAndAnswers += "Question: ".concat(qWhyInput, ", Answer: ").concat(aWhyInput, "\n");
+      }
+
+      // 处理 Who 相关字段
+      questionsAndAnswers += "Question: ".concat(this.qWhoInput, ", Answer: ").concat(this.aWhoInput, "\n");
+      for (var _i4 = 0; _i4 < this.questionsWhoBoxes.length; _i4++) {
+        var qWhoInput = this.questionsWhoBoxes[_i4].qWhoInput;
+        var aWhoInput = this.questionsWhoBoxes[_i4].aWhoInput;
+        questionsAndAnswers += "Question: ".concat(qWhoInput, ", Answer: ").concat(aWhoInput, "\n");
+      }
+
+      // 处理 How 相关字段
+      questionsAndAnswers += "Question: ".concat(this.qHowInput, ", Answer: ").concat(this.aHowInput, "\n");
+      for (var _i5 = 0; _i5 < this.questionsHowBoxes.length; _i5++) {
+        var qHowInput = this.questionsHowBoxes[_i5].qHowInput;
+        var aHowInput = this.questionsHowBoxes[_i5].aHowInput;
+        questionsAndAnswers += "Question: ".concat(qHowInput, ", Answer: ").concat(aHowInput, "\n");
+      }
+      var openid = wx.getStorageSync('openid');
+      var publicValue;
+      if (this.checkboxValue.includes("cb")) {
+        publicValue = 1;
+      } else {
+        publicValue = 0;
+      }
+      var data = {
+        questionsAndAnswers: questionsAndAnswers,
+        openid: openid,
+        titleValue: this.titleValue,
+        selectedTags: this.selectedTags,
+        publicValue: this.publicValue
+        // 其他字段
+      };
+
+      // 发送POST请求
+      uni.request({
+        url: '后端url',
+        method: 'POST',
+        data: data,
+        success: function success(res) {
+          // 处理请求成功的回调
+        },
+        fail: function fail(err) {
+          console.log(err);
+          // 处理请求失败的回调
+        }
       });
-      var answers = answerInputs.map(function (input) {
-        return input.value;
-      });
-      var allQuestions = questions.join(';'); // Join questions with a separator
-      var allAnswers = answers.join(';'); // Join answers with a separator
-
-      // Set the form values
-      this.$refs.openidInput.value = uni.getStorageSync('openid');
-      this.$refs.titleValueInput.value = this.titleValue;
-      this.$refs.selectedTagsInput.value = this.selectedTags;
-      this.$refs.publicValueInput.value = this.checkboxValue.includes('cb') ? 1 : 0;
-
-      // Append the concatenated questions and answers to the form data
-      var questionsInput = document.createElement('input');
-      questionsInput.name = 'questions';
-      questionsInput.value = allQuestions;
-      questionsInput.type = 'hidden';
-      event.target.appendChild(questionsInput);
-      var answersInput = document.createElement('input');
-      answersInput.name = 'answers';
-      answersInput.value = allAnswers;
-      answersInput.type = 'hidden';
-      event.target.appendChild(answersInput);
-
-      // Submit the form
-      event.target.submit();
     },
     /* saveData() {
     let data={};
@@ -648,7 +690,7 @@ var _default = {
   }
 };
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 

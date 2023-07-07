@@ -164,7 +164,7 @@
      <input name="titleValue" type="hidden" />
      <input name="selectedTags" type="hidden" />
      <input name="publicValue" type="hidden" />
-     <button type="submit" class="save-button">保存</button>
+     <button form-type="submit" class="save-button">保存</button>
    
    </form>
     </view>
@@ -203,39 +203,84 @@ export default {
   methods: {
 	  handleSubmit(event) {
 		  console.log("?")
-	    event.preventDefault();
-	  
-	    // Get all the question and answer inputs
-	    const questionInputs = Array.from(document.querySelectorAll('.qWhat, .qWhere, .qWhen, .qWhy, .qWho, .qHow'));
-	    const answerInputs = Array.from(document.querySelectorAll('.aWhat, .aWhere, .aWhen, .aWhy, .aWho, .aHow'));
-	  
-	    // Extract the values from the inputs and concatenate them
-	    const questions = questionInputs.map(input => input.value);
-	    const answers = answerInputs.map(input => input.value);
-	    const allQuestions = questions.join(';'); // Join questions with a separator
-	    const allAnswers = answers.join(';'); // Join answers with a separator
-	  
-	    // Set the form values
-	    this.$refs.openidInput.value = uni.getStorageSync('openid');
-	    this.$refs.titleValueInput.value = this.titleValue;
-	    this.$refs.selectedTagsInput.value = this.selectedTags;
-	    this.$refs.publicValueInput.value = this.checkboxValue.includes('cb') ? 1 : 0;
-	  
-	    // Append the concatenated questions and answers to the form data
-	    const questionsInput = document.createElement('input');
-	    questionsInput.name = 'questions';
-	    questionsInput.value = allQuestions;
-	    questionsInput.type = 'hidden';
-	    event.target.appendChild(questionsInput);
-	  
-	    const answersInput = document.createElement('input');
-	    answersInput.name = 'answers';
-	    answersInput.value = allAnswers;
-	    answersInput.type = 'hidden';
-	    event.target.appendChild(answersInput);
-	  
-	    // Submit the form
-	    event.target.submit();
+  let questionsAndAnswers = '';
+  
+      // 处理 What 相关字段
+      questionsAndAnswers += `Question: ${this.qWhatInput}, Answer: ${this.aWhatInput}\n`;
+      for (let i = 0; i < this.questionsWhatBoxes.length; i++) {
+        const qWhatInput = this.questionsWhatBoxes[i].qWhatInput;
+        const aWhatInput = this.questionsWhatBoxes[i].aWhatInput;
+        questionsAndAnswers += `Question: ${qWhatInput}, Answer: ${aWhatInput}\n`;
+      }
+  
+      // 处理 Where 相关字段
+      questionsAndAnswers += `Question: ${this.qWhereInput}, Answer: ${this.aWhereInput}\n`;
+      for (let i = 0; i < this.questionsWhereBoxes.length; i++) {
+        const qWhereInput = this.questionsWhereBoxes[i].qWhereInput;
+        const aWhereInput = this.questionsWhereBoxes[i].aWhereInput;
+        questionsAndAnswers += `Question: ${qWhereInput}, Answer: ${aWhereInput}\n`;
+      }
+  
+      // 处理 When 相关字段
+      questionsAndAnswers += `Question: ${this.qWhenInput}, Answer: ${this.aWhenInput}\n`;
+      for (let i = 0; i < this.questionsWhenBoxes.length; i++) {
+        const qWhenInput = this.questionsWhenBoxes[i].qWhenInput;
+        const aWhenInput = this.questionsWhenBoxes[i].aWhenInput;
+        questionsAndAnswers += `Question: ${qWhenInput}, Answer: ${aWhenInput}\n`;
+      }
+  
+      // 处理 Why 相关字段
+      questionsAndAnswers += `Question: ${this.qWhyInput}, Answer: ${this.aWhyInput}\n`;
+      for (let i = 0; i < this.questionsWhyBoxes.length; i++) {
+        const qWhyInput = this.questionsWhyBoxes[i].qWhyInput;
+        const aWhyInput = this.questionsWhyBoxes[i].aWhyInput;
+        questionsAndAnswers += `Question: ${qWhyInput}, Answer: ${aWhyInput}\n`;
+      }
+  
+      // 处理 Who 相关字段
+      questionsAndAnswers += `Question: ${this.qWhoInput}, Answer: ${this.aWhoInput}\n`;
+      for (let i = 0; i < this.questionsWhoBoxes.length; i++) {
+        const qWhoInput = this.questionsWhoBoxes[i].qWhoInput;
+        const aWhoInput = this.questionsWhoBoxes[i].aWhoInput;
+        questionsAndAnswers += `Question: ${qWhoInput}, Answer: ${aWhoInput}\n`;
+      }
+  
+      // 处理 How 相关字段
+      questionsAndAnswers += `Question: ${this.qHowInput}, Answer: ${this.aHowInput}\n`;
+      for (let i = 0; i < this.questionsHowBoxes.length; i++) {
+        const qHowInput = this.questionsHowBoxes[i].qHowInput;
+        const aHowInput = this.questionsHowBoxes[i].aHowInput;
+        questionsAndAnswers += `Question: ${qHowInput}, Answer: ${aHowInput}\n`;
+      }
+		const openid = wx.getStorageSync('openid')
+		var publicValue
+				 if (this.checkboxValue.includes("cb")) {
+				    publicValue=1
+				 } else {
+				 	publicValue=0
+				     }
+      const data = {
+        questionsAndAnswers: questionsAndAnswers,
+        openid: openid,
+        titleValue: this.titleValue,
+        selectedTags: this.selectedTags,
+        publicValue: this.publicValue,
+        // 其他字段
+      };
+  
+      // 发送POST请求
+      uni.request({
+        url: '后端url',
+        method: 'POST',
+        data: data,
+        success: (res) => {
+          // 处理请求成功的回调
+        },
+        fail: (err) => {
+			console.log(err)
+          // 处理请求失败的回调
+        }
+      });
 	  },
    /* saveData() {
 		let data={};

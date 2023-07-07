@@ -181,7 +181,7 @@ export default {
         url: '后端接口地址',
         method: 'POST',
         data: {
-		openid:this.openid,
+		openid:openid,
 		title:this.titleValue,
 		selectedTags: this.selectedTags,
         content: this.noteData,
@@ -189,9 +189,13 @@ export default {
         },
         success: (res) => {
           console.log('保存成功');
+		  // console.log(noteData)
         },
         fail: (err) => {
+			// console.log("11111");
           console.error('保存失败', err);
+		  // console.log(err.data)
+		  // console.log(err)
         }
       });
     }
