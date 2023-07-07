@@ -88,7 +88,7 @@
 							</view>
 					</uni-popup>
 				</view>
-		<view class="row">
+		<!-- <view class="row">
 		  <view class="column">
 		    <view class="block" :style="{ backgroundImage: 'url(' + Simage + ')' }">
 		      <textarea v-model="textS" class="textarea" maxlength="160"></textarea>
@@ -105,7 +105,7 @@
 		      <textarea v-model="textT" class="textarea" maxlength="160"></textarea>
 		    </view>
 		  </view>
-		  </view>
+		  </view> -->
 		  
 		 
 		
@@ -184,14 +184,12 @@ export default {
 				 	publicValue=0
 				     }
 		const openid = wx.getStorageSync('openid')
+		let noteData = "textarea1: "+this.textarea1+" textarea2: "+this.textarea2+" textarea3: "+this.textarea3+" textarea4: "+this.textarea4;
       const data = {
 		  openid:this.openid,
 		  title:this.titleValue,
 		  selectedTags: this.selectedTags,
-        textarea1: this.textarea1,
-        textarea2: this.textarea2,
-        textarea3: this.textarea3,
-        textarea4: this.textarea4,
+        data:noteData,
 		publicValue:this.publicValue,
       };
 

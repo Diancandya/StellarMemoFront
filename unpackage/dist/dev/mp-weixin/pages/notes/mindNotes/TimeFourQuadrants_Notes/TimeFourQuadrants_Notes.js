@@ -410,14 +410,12 @@ var _default = {
         publicValue = 0;
       }
       var openid = wx.getStorageSync('openid');
+      var noteData = "textarea1: " + this.textarea1 + " textarea2: " + this.textarea2 + " textarea3: " + this.textarea3 + " textarea4: " + this.textarea4;
       var data = {
         openid: this.openid,
         title: this.titleValue,
         selectedTags: this.selectedTags,
-        textarea1: this.textarea1,
-        textarea2: this.textarea2,
-        textarea3: this.textarea3,
-        textarea4: this.textarea4,
+        data: noteData,
         publicValue: this.publicValue
       };
 

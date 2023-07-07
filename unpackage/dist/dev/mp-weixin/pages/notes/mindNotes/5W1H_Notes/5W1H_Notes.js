@@ -219,13 +219,12 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(wx, uni) {
+/* WEBPACK VAR INJECTION */(function(uni) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-//
 //
 //
 //
@@ -428,145 +427,179 @@ var _default = {
     };
   },
   methods: {
-    saveData: function saveData() {
-      var data = {};
+    handleSubmit: function handleSubmit(event) {
+      console.log("?");
+      event.preventDefault();
 
-      // 获取What部分的非空输入框的内容
-      if (this.$refs.qWhatInput && this.$refs.qWhatInput.value.trim() !== '') {
-        data.qWhat = this.$refs.qWhatInput.value.trim();
-      }
-      if (this.$refs.aWhatInput && this.$refs.aWhatInput.value.trim() !== '') {
-        data.aWhat = this.$refs.aWhatInput.value.trim();
-      }
-      for (var i = 0; i < this.questionsWhatBoxes.length; i++) {
-        var qInput = this.$refs.qWhatInput[i];
-        var aInput = this.$refs.aWhatInput[i];
-        if (qInput && qInput.value.trim() !== '') {
-          data["qWhat".concat(i)] = qInput.value.trim();
-        }
-        if (aInput && aInput.value.trim() !== '') {
-          data["aWhat".concat(i)] = aInput.value.trim();
-        }
-      }
-      //获取Where部分的非空输入框的内容
-      if (this.$refs.qWhereInput && this.$refs.qWhereInput.value.trim() !== '') {
-        data.qWhere = this.$refs.qWhereInput.value.trim();
-      }
-      if (this.$refs.aWhereInput && this.$refs.aWhereInput.value.trim() !== '') {
-        data.aWhere = this.$refs.aWhereInput.value.trim();
-      }
-      for (var _i = 0; _i < this.questionsWhereBoxes.length; _i++) {
-        var _qInput = this.$refs.qWhereInput[_i];
-        var _aInput = this.$refs.aWhereInput[_i];
-        if (_qInput && _qInput.value.trim() !== '') {
-          data["qWhere".concat(_i)] = _qInput.value.trim();
-        }
-        if (_aInput && _aInput.value.trim() !== '') {
-          data["aWhere".concat(_i)] = _aInput.value.trim();
-        }
-      }
+      // Get all the question and answer inputs
+      var questionInputs = Array.from(document.querySelectorAll('.qWhat, .qWhere, .qWhen, .qWhy, .qWho, .qHow'));
+      var answerInputs = Array.from(document.querySelectorAll('.aWhat, .aWhere, .aWhen, .aWhy, .aWho, .aHow'));
 
-      //获取When部分的非空输入框的内容
-      if (this.$refs.qWhenInput && this.$refs.qWhenInput.value.trim() !== '') {
-        data.qWhen = this.$refs.qWhenInput.value.trim();
-      }
-      if (this.$refs.aWhenInput && this.$refs.aWhenInput.value.trim() !== '') {
-        data.aWhen = this.$refs.aWhenInput.value.trim();
-      }
-      for (var _i2 = 0; _i2 < this.questionsWhenBoxes.length; _i2++) {
-        var _qInput2 = this.$refs.qWhenInput[_i2];
-        var _aInput2 = this.$refs.aWhenInput[_i2];
-        if (_qInput2 && _qInput2.value.trim() !== '') {
-          data["qWhen".concat(_i2)] = _qInput2.value.trim();
-        }
-        if (_aInput2 && _aInput2.value.trim() !== '') {
-          data["aWhen".concat(_i2)] = _aInput2.value.trim();
-        }
-      }
-
-      //获取Why部分的非空输入框的内容
-      if (this.$refs.qWhyInput && this.$refs.qWhyInput.value.trim() !== '') {
-        data.qWhy = this.$refs.qWhyInput.value.trim();
-      }
-      if (this.$refs.aWhyInput && this.$refs.aWhyInput.value.trim() !== '') {
-        data.aWhy = this.$refs.aWhyInput.value.trim();
-      }
-      for (var _i3 = 0; _i3 < this.questionsWhyBoxes.length; _i3++) {
-        var _qInput3 = this.$refs.qWhyInput[_i3];
-        var _aInput3 = this.$refs.aWhyInput[_i3];
-        if (_qInput3 && _qInput3.value.trim() !== '') {
-          data["qWhy".concat(_i3)] = _qInput3.value.trim();
-        }
-        if (_aInput3 && _aInput3.value.trim() !== '') {
-          data["aWhy".concat(_i3)] = _aInput3.value.trim();
-        }
-      }
-
-      //获取Who部分的非空输入框的内容
-      if (this.$refs.qWhoInput && this.$refs.qWhoInput.value.trim() !== '') {
-        data.qWho = this.$refs.qWhoInput.value.trim();
-      }
-      if (this.$refs.aWhoInput && this.$refs.aWhoInput.value.trim() !== '') {
-        data.aWho = this.$refs.aWhoInput.value.trim();
-      }
-      for (var _i4 = 0; _i4 < this.questionsWhoBoxes.length; _i4++) {
-        var _qInput4 = this.$refs.qWhoInput[_i4];
-        var _aInput4 = this.$refs.aWhoInput[_i4];
-        if (_qInput4 && _qInput4.value.trim() !== '') {
-          data["qWho".concat(_i4)] = _qInput4.value.trim();
-        }
-        if (_aInput4 && _aInput4.value.trim() !== '') {
-          data["aWho".concat(_i4)] = _aInput4.value.trim();
-        }
-      }
-      //获取How部分的非空输入框的内容
-      if (this.$refs.qHowInput && this.$refs.qHowInput.value.trim() !== '') {
-        data.qHow = this.$refs.qHowInput.value.trim();
-      }
-      if (this.$refs.aHowInput && this.$refs.aHowInput.value.trim() !== '') {
-        data.aHow = this.$refs.aHowInput.value.trim();
-      }
-      for (var _i5 = 0; _i5 < this.questionsHowBoxes.length; _i5++) {
-        var _qInput5 = this.$refs.qHowInput[_i5];
-        var _aInput5 = this.$refs.aHowInput[_i5];
-        if (_qInput5 && _qInput5.value.trim() !== '') {
-          data["qHow".concat(_i5)] = _qInput5.value.trim();
-        }
-        if (_aInput5 && _aInput5.value.trim() !== '') {
-          data["aHow".concat(_i5)] = _aInput5.value.trim();
-        }
-      }
-
-      /* let inputs = document.querySelectorAll('input');
-      inputs.forEach(input => {
-        if (input.value) {
-          body[input.className] = input.value;
-        }
-      });*/
-
-      var openid = wx.getStorageSync('openid');
-      var publicValue;
-      if (this.checkboxValue.includes("cb")) {
-        publicValue = 1;
-      } else {
-        publicValue = 0;
-      }
-      var noteData = {
-        openid: this.openid,
-        title: this.titleValue,
-        selectedTags: this.selectedTags,
-        data: this.data,
-        publicValue: this.publicValue
-      };
-      uni.request({
-        url: '后端',
-        method: 'POST',
-        data: noteData,
-        success: function success(res) {
-          console.log(res);
-        }
+      // Extract the values from the inputs and concatenate them
+      var questions = questionInputs.map(function (input) {
+        return input.value;
       });
+      var answers = answerInputs.map(function (input) {
+        return input.value;
+      });
+      var allQuestions = questions.join(';'); // Join questions with a separator
+      var allAnswers = answers.join(';'); // Join answers with a separator
+
+      // Set the form values
+      this.$refs.openidInput.value = uni.getStorageSync('openid');
+      this.$refs.titleValueInput.value = this.titleValue;
+      this.$refs.selectedTagsInput.value = this.selectedTags;
+      this.$refs.publicValueInput.value = this.checkboxValue.includes('cb') ? 1 : 0;
+
+      // Append the concatenated questions and answers to the form data
+      var questionsInput = document.createElement('input');
+      questionsInput.name = 'questions';
+      questionsInput.value = allQuestions;
+      questionsInput.type = 'hidden';
+      event.target.appendChild(questionsInput);
+      var answersInput = document.createElement('input');
+      answersInput.name = 'answers';
+      answersInput.value = allAnswers;
+      answersInput.type = 'hidden';
+      event.target.appendChild(answersInput);
+
+      // Submit the form
+      event.target.submit();
     },
+    /* saveData() {
+    let data={};
+    
+       // 获取What部分的非空输入框的内容
+       if (this.$refs.qWhatInput && this.$refs.qWhatInput.value.trim() !== '') {
+    	// console.log($refs.qWhatInput.value)
+         data.qWhat = this.$refs.qWhatInput.value.trim();
+       }
+       if (this.$refs.aWhatInput && this.$refs.aWhatInput.value.trim() !== '') {
+         data.aWhat = this.$refs.aWhatInput.value.trim();
+       }
+       for (let i = 0; i < this.questionsWhatBoxes.length; i++) {
+         const qInput = this.$refs.qWhatInput[i];
+         const aInput = this.$refs.aWhatInput[i];
+         if (qInput && qInput.value.trim() !== '') {
+           data[`qWhat${i}`] = qInput.value.trim();
+         }
+         if (aInput && aInput.value.trim() !== '') {
+           data[`aWhat${i}`] = aInput.value.trim();
+         }
+       }
+    //获取Where部分的非空输入框的内容
+        if (this.$refs.qWhereInput && this.$refs.qWhereInput.value.trim() !== '') {
+          data.qWhere = this.$refs.qWhereInput.value.trim();
+        }
+        if (this.$refs.aWhereInput && this.$refs.aWhereInput.value.trim() !== '') {
+          data.aWhere = this.$refs.aWhereInput.value.trim();
+        }
+        for (let i = 0; i < this.questionsWhereBoxes.length; i++) {
+          const qInput = this.$refs.qWhereInput[i];
+          const aInput = this.$refs.aWhereInput[i];
+          if (qInput && qInput.value.trim() !== '') {
+            data[`qWhere${i}`] = qInput.value.trim();
+          }
+          if (aInput && aInput.value.trim() !== '') {
+            data[`aWhere${i}`] = aInput.value.trim();
+          }
+        }
+    
+        //获取When部分的非空输入框的内容
+        if (this.$refs.qWhenInput && this.$refs.qWhenInput.value.trim() !== '') {
+          data.qWhen = this.$refs.qWhenInput.value.trim();
+        }
+        if (this.$refs.aWhenInput && this.$refs.aWhenInput.value.trim() !== '') {
+          data.aWhen = this.$refs.aWhenInput.value.trim();
+        }
+        for (let i = 0; i < this.questionsWhenBoxes.length; i++) {
+          const qInput = this.$refs.qWhenInput[i];
+          const aInput = this.$refs.aWhenInput[i];
+          if (qInput && qInput.value.trim() !== '') {
+            data[`qWhen${i}`] = qInput.value.trim();
+          }
+          if (aInput && aInput.value.trim() !== '') {
+            data[`aWhen${i}`] = aInput.value.trim();
+          }
+        }
+    	
+    	//获取Why部分的非空输入框的内容
+    	    if (this.$refs.qWhyInput && this.$refs.qWhyInput.value.trim() !== '') {
+    	      data.qWhy = this.$refs.qWhyInput.value.trim();
+    	    }
+    	    if (this.$refs.aWhyInput && this.$refs.aWhyInput.value.trim() !== '') {
+    	      data.aWhy = this.$refs.aWhyInput.value.trim();
+    	    }
+    	    for (let i = 0; i < this.questionsWhyBoxes.length; i++) {
+    	      const qInput = this.$refs.qWhyInput[i];
+    	      const aInput = this.$refs.aWhyInput[i];
+    	      if (qInput && qInput.value.trim() !== '') {
+    	        data[`qWhy${i}`] = qInput.value.trim();
+    	      }
+    	      if (aInput && aInput.value.trim() !== '') {
+    	        data[`aWhy${i}`] = aInput.value.trim();
+    	      }
+    	    }
+    		
+    		//获取Who部分的非空输入框的内容
+    		    if (this.$refs.qWhoInput && this.$refs.qWhoInput.value.trim() !== '') {
+    		      data.qWho = this.$refs.qWhoInput.value.trim();
+    		    }
+    		    if (this.$refs.aWhoInput && this.$refs.aWhoInput.value.trim() !== '') {
+    		      data.aWho = this.$refs.aWhoInput.value.trim();
+    		    }
+    		    for (let i = 0; i < this.questionsWhoBoxes.length; i++) {
+    		      const qInput = this.$refs.qWhoInput[i];
+    		      const aInput = this.$refs.aWhoInput[i];
+    		      if (qInput && qInput.value.trim() !== '') {
+    		        data[`qWho${i}`] = qInput.value.trim();
+    		      }
+    		      if (aInput && aInput.value.trim() !== '') {
+    		        data[`aWho${i}`] = aInput.value.trim();
+    		      }
+    		    }
+    //获取How部分的非空输入框的内容
+        if (this.$refs.qHowInput && this.$refs.qHowInput.value.trim() !== '') {
+          data.qHow = this.$refs.qHowInput.value.trim();
+        }
+        if (this.$refs.aHowInput && this.$refs.aHowInput.value.trim() !== '') {
+          data.aHow = this.$refs.aHowInput.value.trim();
+        }
+        for (let i = 0; i < this.questionsHowBoxes.length; i++) {
+          const qInput = this.$refs.qHowInput[i];
+          const aInput = this.$refs.aHowInput[i];
+          if (qInput && qInput.value.trim() !== '') {
+            data[`qHow${i}`] = qInput.value.trim();
+          }
+          if (aInput && aInput.value.trim() !== '') {
+            data[`aHow${i}`] = aInput.value.trim();
+          }
+        }
+    const jsonData = JSON.stringify(data);
+    console.log(jsonData)
+    const openid = wx.getStorageSync('openid')
+    var publicValue
+    if (this.checkboxValue.includes("cb")) {
+       publicValue=1
+    } else {
+    	publicValue=0
+        }
+    let noteData = {
+      openid:this.openid,
+      title: this.titleValue,
+      selectedTags: this.selectedTags,
+      data:jsonData,
+      publicValue:this.publicValue,
+    }; 
+          uni.request({
+            url: '后端',
+            method: 'POST',
+            data: noteData,
+            success: function (res) {
+              console.log(res);
+            }
+          });
+     }, */
     QuestionsWhat: function QuestionsWhat() {
       this.questionsWhatBoxes.push({});
     },
@@ -615,7 +648,7 @@ var _default = {
   }
 };
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 

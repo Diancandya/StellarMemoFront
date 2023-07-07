@@ -84,90 +84,89 @@
 	  			</uni-popup>
 	  		</view>
 	  
-    <view class="analysis-model">
-		<view >
-		  <view class="titleF" >What</view>
-		  <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsWhat" />
-		</view>
-		<input  ref="qWhatInput" class="qWhat" type="text" 
-		placeholder="Question" 
-		placeholder-style="color:#489F90;"
-		/>
-		<input ref="aWhatInput" class="aWhat" type="text" 
-		placeholder="Answer" 
-		placeholder-style="color:#489F90;"/>
-		<view v-for="(questionsWhatBox, qWhatIndex) in questionsWhatBoxes" :key="qWhatindex" >	
-			<input ref="qWhatInput" class="qWhat" type="text" 
-			placeholder="Question" 
-			placeholder-style="color:#489F90;"/>
-			<input ref="aWhatInput" class="aWhat" type="text" 
-			placeholder="Answer"
-			 placeholder-style="color:#489F90;"/>
-		</view>
-		
-		<view >
-		  <view class="titleF" >Where</view>
-		  <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsWhere" />
-		</view>
-		<input ref="qWhereInput" class="qWhere" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
-		<input ref="aWhereInput" class="aWhere" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
-		<view v-for="(questionsWhereBox, qWhereIndex) in questionsWhereBoxes" :key="qWhereindex">	
-			<input ref="qWhereInput" class="qWhere" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
-			<input ref="aWhereInput" class="aWhere" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
-		</view>
-		
-		<view >
-		  <view class="titleF" >When</view>
-		  <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsWhen" />
-		</view>
-		<input ref="qWhenInput" class="qWhen" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
-		<input ref="aWhenInput" class="aWhen" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
-		<view v-for="(questionsWhenBox, qWhenIndex) in questionsWhenBoxes" :key="qWhenindex">	
-			<input ref="qWhenInput" class="qWhen" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
-			<input ref="aWhenInput" class="aWhen" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
-		</view>
-		
-		<view >
-		  <view class="titleF" >Why</view>
-		  <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsWhy" />
-		</view>
-		<input ref="qWhyInput" class="qWhy" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
-		<input ref="aWhyInput" class="aWhy" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
-		<view v-for="(questionsWhyBox, qWhyIndex) in questionsWhyBoxes" :key="qWhyindex">	
-			<input ref="qWhyInput" class="qWhy" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
-			<input ref="aWhyInput" class="aWhy" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
-		</view>
-		
-		<view >
-		  <view class="titleF" >Who</view>
-		  <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsWho" />
-		</view>
-		<input ref="qWhoInput" class="qWho" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
-		<input ref="aWhoInput" class="aWho" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
-		<view v-for="(questionsWhoBox, qWhoIndex) in questionsWhoBoxes" :key="qWhoindex">	
-			<input ref="qWhoInput" class="qWho" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
-			<input ref="aWhoInput" class="aWho" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
-		</view>
-		
-		<view >
-		  <view class="titleF" >How</view>
-		  <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsHow" />
-		</view>
-		<input ref="qHowInput" class="qHow" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
-		<input ref="aHowInput" class="aHow" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
-		<view v-for="(questionsHowBox, qHowIndex) in questionsHowBoxes" :key="qHowindex">	
-			<input ref="qHowInput" class="qHow" type="text" placeholder="Question" placeholder-style="color:#489F90;"/>
-			<input ref="aHowInput" class="aHow" type="text" placeholder="Answer" placeholder-style="color:#489F90;"/>
-		</view>
-	<view>
-					<checkbox-group v-model="checkboxValue" class="checkbox">
-						<label>
-							<checkbox value="cb" />公开
-						</label>
-					</checkbox-group>
-				</view>
-      </view>
-      <button @click="saveData" class="save-button">保存</button>
+   <form @submit="handleSubmit" action="后端url" >
+     <view class="analysis-model">
+       <view>
+         <view class="titleF">What</view>
+         <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsWhat" />
+       </view>
+       <input name="qWhatInput" class="qWhat" type="text" placeholder="Question" placeholder-style="color:#489F90;" />
+       <input name="aWhatInput" class="aWhat" type="text" placeholder="Answer" placeholder-style="color:#489F90;" />
+       <view v-for="(questionsWhatBox, qWhatIndex) in questionsWhatBoxes" :key="qWhatindex">
+         <input name="qWhatInput" class="qWhat" type="text" placeholder="Question" placeholder-style="color:#489F90;" />
+         <input name="aWhatInput" class="aWhat" type="text" placeholder="Answer" placeholder-style="color:#489F90;" />
+       </view>
+   
+       <view>
+         <view class="titleF">Where</view>
+         <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsWhere" />
+       </view>
+       <input name="qWhereInput" class="qWhere" type="text" placeholder="Question" placeholder-style="color:#489F90;" />
+       <input name="aWhereInput" class="aWhere" type="text" placeholder="Answer" placeholder-style="color:#489F90;" />
+       <view v-for="(questionsWhereBox, qWhereIndex) in questionsWhereBoxes" :key="qWhereindex">
+         <input name="qWhereInput" class="qWhere" type="text" placeholder="Question" placeholder-style="color:#489F90;" />
+         <input name="aWhereInput" class="aWhere" type="text" placeholder="Answer" placeholder-style="color:#489F90;" />
+       </view>
+   
+       <view>
+         <view class="titleF">When</view>
+         <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsWhen" />
+       </view>
+       <input name="qWhenInput" class="qWhen" type="text" placeholder="Question" placeholder-style="color:#489F90;" />
+       <input name="aWhenInput" class="aWhen" type="text" placeholder="Answer" placeholder-style="color:#489F90;" />
+       <view v-for="(questionsWhenBox, qWhenIndex) in questionsWhenBoxes" :key="qWhenindex">
+         <input name="qWhenInput" class="qWhen" type="text" placeholder="Question" placeholder-style="color:#489F90;" />
+         <input name="aWhenInput" class="aWhen" type="text" placeholder="Answer" placeholder-style="color:#489F90;" />
+       </view>
+   
+       <view>
+         <view class="titleF">Why</view>
+         <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsWhy" />
+       </view>
+       <input name="qWhyInput" class="qWhy" type="text" placeholder="Question" placeholder-style="color:#489F90;" />
+       <input name="aWhyInput" class="aWhy" type="text" placeholder="Answer" placeholder-style="color:#489F90;" />
+       <view v-for="(questionsWhyBox, qWhyIndex) in questionsWhyBoxes" :key="qWhyindex">
+         <input name="qWhyInput" class="qWhy" type="text" placeholder="Question" placeholder-style="color:#489F90;" />
+         <input name="aWhyInput" class="aWhy" type="text" placeholder="Answer" placeholder-style="color:#489F90;" />
+       </view>
+   
+       <view>
+         <view class="titleF">Who</view>
+         <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsWho" />
+       </view>
+       <input name="qWhoInput" class="qWho" type="text" placeholder="Question" placeholder-style="color:#489F90;" />
+       <input name="aWhoInput" class="aWho" type="text" placeholder="Answer" placeholder-style="color:#489F90;" />
+       <view v-for="(questionsWhoBox, qWhoIndex) in questionsWhoBoxes" :key="qWhoindex">
+         <input name="qWhoInput" class="qWho" type="text" placeholder="Question" placeholder-style="color:#489F90;" />
+         <input name="aWhoInput" class="aWho" type="text" placeholder="Answer" placeholder-style="color:#489F90;" />
+       </view>
+   
+       <view>
+         <view class="titleF">How</view>
+         <image class="questionIcon" src="../../../../static/QA.png" @click="QuestionsHow" />
+       </view>
+       <input name="qHowInput" class="qHow" type="text" placeholder="Question" placeholder-style="color:#489F90;" />
+       <input name="aHowInput" class="aHow" type="text" placeholder="Answer" placeholder-style="color:#489F90;" />
+       <view v-for="(questionsHowBox, qHowIndex) in questionsHowBoxes" :key="qHowindex">
+         <input name="qHowInput" class="qHow" type="text" placeholder="Question" placeholder-style="color:#489F90;" />
+         <input name="aHowInput" class="aHow" type="text" placeholder="Answer" placeholder-style="color:#489F90;" />
+       </view>
+   
+       <view>
+         <checkbox-group v-model="checkboxValue" class="checkbox">
+           <label>
+             <checkbox value="cb" />公开
+           </label>
+         </checkbox-group>
+       </view>
+     </view>
+     <input name="openid" type="hidden" />
+     <input name="titleValue" type="hidden" />
+     <input name="selectedTags" type="hidden" />
+     <input name="publicValue" type="hidden" />
+     <button type="submit" class="save-button">保存</button>
+   
+   </form>
     </view>
 
 </template>
@@ -202,11 +201,48 @@ export default {
     };
   },
   methods: {
-    saveData() {
+	  handleSubmit(event) {
+		  console.log("?")
+	    event.preventDefault();
+	  
+	    // Get all the question and answer inputs
+	    const questionInputs = Array.from(document.querySelectorAll('.qWhat, .qWhere, .qWhen, .qWhy, .qWho, .qHow'));
+	    const answerInputs = Array.from(document.querySelectorAll('.aWhat, .aWhere, .aWhen, .aWhy, .aWho, .aHow'));
+	  
+	    // Extract the values from the inputs and concatenate them
+	    const questions = questionInputs.map(input => input.value);
+	    const answers = answerInputs.map(input => input.value);
+	    const allQuestions = questions.join(';'); // Join questions with a separator
+	    const allAnswers = answers.join(';'); // Join answers with a separator
+	  
+	    // Set the form values
+	    this.$refs.openidInput.value = uni.getStorageSync('openid');
+	    this.$refs.titleValueInput.value = this.titleValue;
+	    this.$refs.selectedTagsInput.value = this.selectedTags;
+	    this.$refs.publicValueInput.value = this.checkboxValue.includes('cb') ? 1 : 0;
+	  
+	    // Append the concatenated questions and answers to the form data
+	    const questionsInput = document.createElement('input');
+	    questionsInput.name = 'questions';
+	    questionsInput.value = allQuestions;
+	    questionsInput.type = 'hidden';
+	    event.target.appendChild(questionsInput);
+	  
+	    const answersInput = document.createElement('input');
+	    answersInput.name = 'answers';
+	    answersInput.value = allAnswers;
+	    answersInput.type = 'hidden';
+	    event.target.appendChild(answersInput);
+	  
+	    // Submit the form
+	    event.target.submit();
+	  },
+   /* saveData() {
 		let data={};
 		
 		    // 获取What部分的非空输入框的内容
 		    if (this.$refs.qWhatInput && this.$refs.qWhatInput.value.trim() !== '') {
+				// console.log($refs.qWhatInput.value)
 		      data.qWhat = this.$refs.qWhatInput.value.trim();
 		    }
 		    if (this.$refs.aWhatInput && this.$refs.aWhatInput.value.trim() !== '') {
@@ -310,14 +346,8 @@ export default {
 			        data[`aHow${i}`] = aInput.value.trim();
 			      }
 			    }
-
-         /* let inputs = document.querySelectorAll('input');
-         inputs.forEach(input => {
-           if (input.value) {
-             body[input.className] = input.value;
-           }
-         });*/
-		 
+		 const jsonData = JSON.stringify(data);
+		 console.log(jsonData)
 		 const openid = wx.getStorageSync('openid')
 		 var publicValue
 		 if (this.checkboxValue.includes("cb")) {
@@ -329,7 +359,7 @@ export default {
 		   openid:this.openid,
 		   title: this.titleValue,
 		   selectedTags: this.selectedTags,
-		   data: this.data,
+		   data:jsonData,
 		   publicValue:this.publicValue,
 		 }; 
          uni.request({
@@ -340,7 +370,7 @@ export default {
              console.log(res);
            }
          });
-    },
+    }, */
 	QuestionsWhat(){
 		this.questionsWhatBoxes.push({});
 	},

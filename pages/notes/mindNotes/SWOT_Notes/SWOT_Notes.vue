@@ -173,7 +173,9 @@ export default {
 				 } else {
 				 	publicValue=0
 				     }
-		const openid = wx.getStorageSync('openid')
+		const openid = wx.getStorageSync('openid');
+		let noteData = "Strengths: "+this.textS+" Weakness: "+this.textW+" Opportunities: "+this.textO+" Threats: "+this.textT;
+		console.log(noteData)
       // 发送POST请求给后端，将textarea的内容发送过去
       uni.request({
         url: '后端接口地址',
@@ -182,7 +184,7 @@ export default {
 		openid:this.openid,
 		title:this.titleValue,
 		selectedTags: this.selectedTags,
-        content: this.text,
+        content: this.noteData,
 		publicValue:this.publicValue,
         },
         success: (res) => {
